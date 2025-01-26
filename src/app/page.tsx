@@ -25,7 +25,7 @@ export default function Home() {
             {Array.from({ length: 5 }).map((_, index) => (
               <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/2">
                 <div className="p-1">
-                  <div className="bg-custom-cream dark:bg-custom-gray relative aspect-video overflow-hidden rounded-lg">
+                  <div className="bg-custom-cream dark:bg-zinc-800 relative aspect-video overflow-hidden rounded-lg">
                     {/* <Image
                       src={`/carousel-${index + 1}.jpg`}
                       alt={`Carousel Image ${index + 1}`}
@@ -42,7 +42,7 @@ export default function Home() {
 
       {/* Product Grid Section */}
       <p className="text-2xl mb-4">Our Collection</p>
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 lg:grid-cols-5">
+      <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
         {Array.from({ length: 4 }).map((_, i) => (
           <ProductCard key={i} />
         ))}

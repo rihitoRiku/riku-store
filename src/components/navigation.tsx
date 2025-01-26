@@ -29,7 +29,7 @@ export function Navigation() {
         </div>
 
         <div className="flex items-center gap-4">
-          {isLoggedIn ? (
+          {!isLoggedIn ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="relative h-8 w-8 rounded-full">
@@ -39,7 +39,7 @@ export function Navigation() {
                   </Avatar>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-32 bg-custom-light dark:bg-custom-dark" align="end" forceMount>
+              <DropdownMenuContent className="w-32 bg-custom-light dark:bg-custom-dark dark:border-none" align="end" forceMount>
                 <DropdownMenuItem>Dashboard</DropdownMenuItem>
                 <DropdownMenuItem className="text-red-600">
                   Logout

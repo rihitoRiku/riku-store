@@ -50,7 +50,7 @@ export function Login() {
 
   return (
     <>
-      <Button variant="outline" onClick={() => setIsLoginOpen(true)}>
+      <Button variant="default" onClick={() => setIsLoginOpen(true)}>
         Login
       </Button>
 
@@ -68,7 +68,7 @@ export function Login() {
               <Input
                 id="email"
                 placeholder="email@example.com"
-                className="py-5"
+                className="py-5 border border-zinc-800"
                 {...form.register("email")}
               />
               {form.formState.errors.email && (
@@ -85,7 +85,7 @@ export function Login() {
                   id="password"
                   type={showPassword ? "text" : "password"}
                   placeholder="••••••••"
-                  className="py-5"
+                  className="py-5 border border-zinc-800"
                   {...form.register("password")}
                 />
                 <button
@@ -112,7 +112,7 @@ export function Login() {
                 Login
               </Button>
 
-              <Button className="w-full" onClick={handleOpenRegister}>
+              <Button type="button" className="w-full" onClick={handleOpenRegister}>
                 Register
               </Button>
             </div>
