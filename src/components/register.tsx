@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { HiEye, HiEyeSlash } from "react-icons/hi2";
+import { OtpDialog } from "./otp-dialog";
 
 const formSchema = z.object({
   nickname: z.string().min(2, "Nickname must be at least 2 characters"),
@@ -21,14 +22,15 @@ const formSchema = z.object({
   password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
-export function Register({ 
+export function Register({
   onSwitchToLogin,
-  onClose
-}: { 
+  onClose,
+}: {
   onSwitchToLogin: () => void;
   onClose: () => void;
 }) {
   const [showPassword, setShowPassword] = useState(false);
+  const [showOtpDialog, setShowOtpDialog] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -41,28 +43,29 @@ export function Register({
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
+    setShowOtpDialog(true);
   }
 
   return (
-    <Dialog 
-      open={true} 
-      onOpenChange={(isOpen) => {
-        if (!isOpen) {
-          onClose();
-        }
-      }}
-    >
-      <DialogContent 
-        className="bg-custom-cream dark:bg-custom-dark max-w-[28rem] rounded-lg border-none"
-        onInteractOutside={() => {
-          onClose();
-          return false;
-        }}
-      >
+    <>
+      {!showOtpDialog && (
+        <Dialog
+          open={true}
+          onOpenChange={(isOpen) => {
+            if (!isOpen) {
+              onClose();
+            }
+          }}
+        >
+        <DialogContent
+          className="max-w-[28rem] rounded-lg border-none bg-custom-cream dark:bg-custom-dark"
+          onInteractOutside={() => {
+            onClose();
+            return false;
+          }}
+        >
           <DialogHeader>
-            <DialogTitle className="text-2xl">
-              Create new account
-            </DialogTitle>
+            <DialogTitle className="text-2xl">Create new account</DialogTitle>
           </DialogHeader>
 
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -71,7 +74,7 @@ export function Register({
               <Input
                 id="nickname"
                 placeholder="Your nickname"
-                className="py-5"
+                className="border py-5 dark:border-zinc-800"
                 {...form.register("nickname")}
               />
               {form.formState.errors.nickname && (
@@ -86,7 +89,7 @@ export function Register({
               <Input
                 id="email"
                 placeholder="email@example.com"
-                className="py-5"
+                className="border py-5 dark:border-zinc-800"
                 {...form.register("email")}
               />
               {form.formState.errors.email && (
@@ -103,7 +106,7 @@ export function Register({
                   id="password"
                   type={showPassword ? "text" : "password"}
                   placeholder="••••••••"
-                  className="py-5"
+                  className="border py-5 dark:border-zinc-800"
                   {...form.register("password")}
                 />
                 <button
@@ -132,20 +135,34 @@ export function Register({
             </div>
 
             <div className="text-center text-sm">
-          Already have an account?{" "}
-          <Button
-            variant="link"
-            className="p-0 text-sm"
-            onClick={(e) => {
-              e.preventDefault();
-              onSwitchToLogin();
-            }}
-          >
-            Login here
-          </Button>
-        </div>
-      </form>
-    </DialogContent>
-  </Dialog>
-);
+              Already have an account?{" "}
+              <Button
+                variant="link"
+                className="p-0 text-sm"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onSwitchToLogin();
+                }}
+              >
+                Login here
+              </Button>
+            </div>
+          </form>
+        </DialogContent>
+        </Dialog>
+      )}
+
+      {showOtpDialog && (
+        <OtpDialog
+          open={true}
+          onOpenChange={(open) => {
+            if (!open) {
+              onClose();
+            }
+            setShowOtpDialog(open);
+          }}
+        />
+      )}
+    </>
+  );
 }

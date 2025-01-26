@@ -7,7 +7,7 @@ import { Heart, ShoppingCart } from "lucide-react"
 export function ProductCard() {
   return (
     <div className="bg-background rounded-lg shadow-sm hover:shadow-md transition-shadow">
-      <div className="relative aspect-square overflow-hidden rounded-t-lg bg-custom-cream dark:bg-custom-gray">
+      <div className="relative aspect-square overflow-hidden rounded-t-lg bg-custom-cream dark:bg-zinc-800">
         {/* <Image
           src="/product.jpg"
           alt="Product Image"
