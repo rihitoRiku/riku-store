@@ -30,6 +30,7 @@ export default {
         },
         custom: {
           dark: "#09090B",
+          secdark: "#3f3f46 ",
           light: "#FAFAFA",
           gray: "#58626C",
           beige: "#DAC8BE",

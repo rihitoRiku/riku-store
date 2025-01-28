@@ -3,8 +3,8 @@ export function Footer() {
     <footer className="bg-background py-8">
       <div className="container max-w-screen-xl mx-auto px-4">
         <div className="flex flex-col items-center gap-4">
-          <p className="text-center text-muted-foreground">
-            Thank you for your trust using our app
+          <p className="text-center text-muted-foreground max-w-[24rem]">
+            Thank you for your trust using our store. Don't forget to follow for more offers:
           </p>
           
           <a
