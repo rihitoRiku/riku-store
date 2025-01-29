@@ -68,7 +68,7 @@ export function Login() {
               <Input
                 id="email"
                 placeholder="email@example.com"
-                className="py-5 border border-zinc-800"
+                className="py-5 border dark:border-zinc-800"
                 {...form.register("email")}
               />
               {form.formState.errors.email && (
@@ -85,7 +85,7 @@ export function Login() {
                   id="password"
                   type={showPassword ? "text" : "password"}
                   placeholder="••••••••"
-                  className="py-5 border border-zinc-800"
+                  className="py-5 border dark:border-zinc-800"
                   {...form.register("password")}
                 />
                 <button
