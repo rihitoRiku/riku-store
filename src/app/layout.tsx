@@ -4,6 +4,7 @@ import { Rethink_Sans, Passions_Conflict, Inter } from "next/font/google"
 import "./globals.css"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
+import NextTopLoader from "nextjs-toploader";
 
 const rethinkSans = Rethink_Sans({
   variable: "--font-rethink-sans",
@@ -36,6 +37,17 @@ export default function RootLayout({
       <body
         className={`font-sans ${rethinkSans.variable} ${passionsConflict.variable} ${inter.variable} antialiased`}
       >
+        {/* Top Loader */}
+        <NextTopLoader
+          color="#16a34a"
+          initialPosition={0.08}
+          crawlSpeed={200}
+          height={3}
+          crawl={true}
+          showSpinner={false}
+          easing="ease"
+          speed={200}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
