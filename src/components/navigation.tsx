@@ -1,4 +1,7 @@
 "use client";
+import Image from "next/image";
+import Link from "next/link";
+import { Login } from "./login";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -6,15 +9,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import Image from "next/image";
+import { ModeToggle } from "@/components/darkmode-toggle";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { HiShoppingCart } from "react-icons/hi2";
-import { ModeToggle } from "@/components/darkmode-toggle";
-import { Login } from "./login";
-import Link from "next/link";
 
 export function Navigation() {
-  const isLoggedIn = false; // TODO: Replace with actual auth state
+  const isLoggedIn = true; // TODO: Replace with actual auth state
 
   return (
     <div className="bg-background w-full">
@@ -41,7 +41,7 @@ export function Navigation() {
                   className="relative h-8 w-8 rounded-full"
                 >
                   <Avatar className="h-8 w-8">
-                    <AvatarImage src="/avatar.png" />
+                    <AvatarImage src="https://api.dicebear.com/9.x/fun-emoji/svg?seed=Jade" />
                     <AvatarFallback>R</AvatarFallback>
                   </Avatar>
                 </Button>
@@ -51,7 +51,7 @@ export function Navigation() {
                 align="end"
                 forceMount
               >
-                <DropdownMenuItem>Dashboard</DropdownMenuItem>
+                <DropdownMenuItem> <Link className="w-full" href="/dashboard">Dashboard</Link></DropdownMenuItem>
                 <DropdownMenuItem className="text-red-600">
                   Logout
                 </DropdownMenuItem>
