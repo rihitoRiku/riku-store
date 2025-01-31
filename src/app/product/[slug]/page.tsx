@@ -1,32 +1,69 @@
 "use client";
-import React from "react";
+import React, { use } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import CardRadioButton from "@/components/ui/card-radio-button";
-import { FaArrowLeft } from "react-icons/fa6";
-import Link from "next/link";
-import { Heart, ShoppingCart } from "lucide-react";
-import { FaShoppingBag } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
+import CardRadioButton from "@/components/ui/card-radio-button";
+import { FaShoppingBag } from "react-icons/fa";
+import { FaArrowLeft } from "react-icons/fa6";
+import { Heart, ShoppingCart } from "lucide-react";
 
-interface ProductQuery {
-  title?: string;
-  description?: string;
-  image?: string;
-  sold?: string;
-  likes?: string;
-}
+const dummyProducts = [
+  {
+    id: 0,
+    title: "Brown Accent Men",
+    price: 19.99,
+    description:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe animi porro pariatur. Cum nisi laboriosam sed molestiae tenetur corrupti explicabo tempora, quos quod. Rerum ipsum esse velit! Ea, fugiat quibusdam.",
+    image: "/assets/items/1.jpg",
+    sold: 25,
+    likes: 421,
+  },
+  {
+    id: 1,
+    title: "White V Model",
+    price: 19.99,
+    description:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe animi porro pariatur. Cum nisi laboriosam sed molestiae tenetur corrupti explicabo tempora, quos quod. Rerum ipsum esse velit! Ea, fugiat quibusdam.",
+    image: "/assets/items/2.jpg",
+    sold: 12,
+    likes: 306,
+  },
+  {
+    id: 2,
+    title: "Sweater",
+    price: 19.99,
+    description:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe animi porro pariatur. Cum nisi laboriosam sed molestiae tenetur corrupti explicabo tempora, quos quod. Rerum ipsum esse velit! Ea, fugiat quibusdam.",
+    image: "/assets/items/3.jpg",
+    sold: 300,
+    likes: 1250,
+  },
+  {
+    id: 3,
+    title: "Hoodie",
+    price: 19.99,
+    description:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe animi porro pariatur. Cum nisi laboriosam sed molestiae tenetur corrupti explicabo tempora, quos quod. Rerum ipsum esse velit! Ea, fugiat quibusdam.",
+    image: "/assets/items/4.jpg",
+    sold: 36,
+    likes: 886,
+  },
+];
 
-export default function ProductDetail() {
-  const searchParams = useSearchParams();
-  const title = searchParams.get("title") || "";
-  const description = searchParams.get("description") || "";
-  const image = searchParams.get("image") || "";
-  const sold = searchParams.get("sold") || "0";
-  const likes = searchParams.get("likes") || "0";
+export default function ProductDetail({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = use(params);
+
+  // Convert slug to number
+  const productId = parseInt(slug);
 
   const options = [
     { id: 1, label: "L" },
@@ -40,32 +77,41 @@ export default function ProductDetail() {
 
   return (
     <div>
-      {/*<h1>{title}</h1>
-       <Image src={image} alt={title} fill className="object-cover" /> 
-      <p>{description}</p>
-      <p>{sold} sold</p>
-      <p>{likes} likes</p>*/}
       <div className="container mx-auto flex max-w-screen-xl flex-col items-start justify-start gap-8 px-4 py-8 lg:flex-row lg:gap-12">
-        <div className="">
+        <div className="w-full">
           <Link href="/" className="flex items-center gap-2">
             <FaArrowLeft />
             <span>Back to Catalog</span>
           </Link>
-          <div className="mt-6 h-[32rem] w-full rounded-lg border dark:border-zinc-700"></div>
+          <div className="mt-6 flex max-h-[32rem] w-full gap-4 rounded-lg dark:border-zinc-700">
+            <div className="relative aspect-[3/4] w-full max-w-[24rem]">
+              <Image
+                src={dummyProducts[productId].image}
+                fill
+                alt="product-image"
+                className="rounded-l-lg object-contain"
+              />
+            </div>
+            <div className="w-[6rem] space-y-4">
+              <div className="aspect-square w-full border dark:border-zinc-700"></div>
+              <div className="aspect-square w-full border dark:border-zinc-700"></div>
+              <div className="aspect-square w-full border dark:border-zinc-700"></div>
+            </div>
+          </div>
           <div className="mt-6 w-full min-w-[24rem] lg:hidden">
-            <p className="text-3xl">Hoodie Premium</p>
+            <p className="text-3xl">{dummyProducts[productId].title}</p>
             <div className="mt-1 flex gap-8">
               <div className="flex items-center gap-2">
                 <Heart className="h-4 w-4 text-red-500" />
-                <span>Likes: 600</span>
+                <span>Likes: {dummyProducts[productId].likes}</span>
               </div>
               <div className="flex items-center gap-2">
                 <ShoppingCart className="h-4 w-4 text-green-500" />
-                <span>Sold: 30</span>
+                <span>Sold: {dummyProducts[productId].sold}</span>
               </div>
             </div>
             <p className="mt-4 text-2xl">$19.99 - $24.99</p>
-            <Button className="mt-4 flex justify-start rounded-none bg-green-400 py-8 px-6 shadow-none dark:bg-green-400 dark:text-custom-dark lg:hidden">
+            <Button className="mt-4 flex justify-start rounded-none bg-green-400 px-6 py-8 shadow-none dark:bg-green-400 dark:text-custom-dark lg:hidden">
               <FaShoppingBag className="text-2xl" />
               <span className="mt-1 text-lg font-light">Order Now</span>
             </Button>
@@ -73,33 +119,26 @@ export default function ProductDetail() {
 
           <div className="mt-6">
             <p className="text-lg">Description</p>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et
-              perspiciatis atque nemo illum officia labore, dolorum aliquid
-              magni amet? Obcaecati optio voluptatum omnis ad et at! Autem optio
-              minima quisquam quo, facere perspiciatis asperiores repudiandae
-              magnam beatae architecto atque repellat numquam corrupti
-              accusantium mollitia et suscipit deserunt odio distinctio sit!
-            </p>
+            <p>{dummyProducts[productId].description}</p>
           </div>
         </div>
 
-        <div className="w-full min-w-[24rem]">
+        <div className="w-[32rem]">
           <div className="hidden lg:block">
-            <p className="text-3xl">Hoodie Premium</p>
+            <p className="text-3xl">{dummyProducts[productId].title}</p>
             <div className="mt-1 flex gap-8">
               <div className="flex items-center gap-2">
                 <Heart className="h-4 w-4 text-red-500" />
-                <span>Likes: 600</span>
+                <span>Likes: {dummyProducts[productId].likes}</span>
               </div>
               <div className="flex items-center gap-2">
                 <ShoppingCart className="h-4 w-4 text-green-500" />
-                <span>Sold: 30</span>
+                <span>Sold: {dummyProducts[productId].sold}</span>
               </div>
             </div>
-            <p className="mt-4 text-2xl">$19.99 - $24.99</p>
+            <p className="mt-4 text-2xl">{dummyProducts[productId].title}</p>
           </div>
-          <Button className="mt-4 hidden justify-start rounded-none bg-green-400 py-8 px-6 shadow-none dark:bg-green-400 dark:text-custom-dark lg:flex">
+          <Button className="mt-4 hidden justify-start rounded-none bg-green-400 px-6 py-8 shadow-none dark:bg-green-400 dark:text-custom-dark lg:flex">
             <FaShoppingBag className="text-2xl" />
             <span className="mt-1 text-lg font-light">Order Now</span>
           </Button>
@@ -116,7 +155,7 @@ export default function ProductDetail() {
             <div className="flex w-full max-w-sm flex-col space-y-2">
               <p className="">Quantity</p>
               <Input
-                className="w-16 dark:border-zinc-700"
+                className="w-16 shadow-none dark:border-zinc-700"
                 type="number"
                 id="quantity"
                 defaultValue="1"
@@ -128,7 +167,7 @@ export default function ProductDetail() {
           <div className="mt-6">
             <p>Notes</p>
             <Textarea
-              className="mt-2 h-32 max-h-40 max-w-[20rem] dark:border-zinc-700"
+              className="mt-2 h-32 max-h-40 max-w-[20rem] shadow-none dark:border-zinc-700"
               placeholder="add notes to seller.."
             />
           </div>
