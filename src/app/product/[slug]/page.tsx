@@ -1,57 +1,76 @@
 "use client";
-import React, { use } from "react";
+import React, { useState, use } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import CardRadioButton from "@/components/ui/card-radio-button";
 import { FaShoppingBag } from "react-icons/fa";
 import { FaArrowLeft } from "react-icons/fa6";
-import { Heart, ShoppingCart } from "lucide-react";
+import { Heart, ShoppingCart, ChevronLeft, ChevronRight } from "lucide-react";
 
+// Updated dummyProducts with a "variants" property for each product.
 const dummyProducts = [
   {
     id: 0,
     title: "Brown Accent Men",
     price: 19.99,
     description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe animi porro pariatur. Cum nisi laboriosam sed molestiae tenetur corrupti explicabo tempora, quos quod. Rerum ipsum esse velit! Ea, fugiat quibusdam.",
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe animi porro pariatur...",
     image: "/assets/items/1.jpg",
     sold: 25,
     likes: 421,
+    variants: [
+      "/assets/items/1.jpg",
+      "/assets/items/1_variant2.jpg",
+      "/assets/items/1_variant3.jpg",
+    ],
   },
   {
     id: 1,
     title: "White V Model",
     price: 19.99,
     description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe animi porro pariatur. Cum nisi laboriosam sed molestiae tenetur corrupti explicabo tempora, quos quod. Rerum ipsum esse velit! Ea, fugiat quibusdam.",
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe animi porro pariatur...",
     image: "/assets/items/2.jpg",
     sold: 12,
     likes: 306,
+    variants: [
+      "/assets/items/2.jpg",
+      "/assets/items/3.jpg",
+      "/assets/items/1.jpg",
+    ],
   },
   {
     id: 2,
     title: "Sweater",
     price: 19.99,
     description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe animi porro pariatur. Cum nisi laboriosam sed molestiae tenetur corrupti explicabo tempora, quos quod. Rerum ipsum esse velit! Ea, fugiat quibusdam.",
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe animi porro pariatur...",
     image: "/assets/items/3.jpg",
     sold: 300,
     likes: 1250,
+    variants: [
+      "/assets/items/3.jpg",
+      "/assets/items/3_variant2.jpg",
+      "/assets/items/3_variant3.jpg",
+    ],
   },
   {
     id: 3,
     title: "Hoodie",
     price: 19.99,
     description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe animi porro pariatur. Cum nisi laboriosam sed molestiae tenetur corrupti explicabo tempora, quos quod. Rerum ipsum esse velit! Ea, fugiat quibusdam.",
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe animi porro pariatur...",
     image: "/assets/items/4.jpg",
     sold: 36,
     likes: 886,
+    variants: [
+      "/assets/items/4.jpg",
+      "/assets/items/4_variant2.jpg",
+      "/assets/items/4_variant3.jpg",
+    ],
   },
 ];
 
@@ -60,10 +79,38 @@ export default function ProductDetail({
 }: {
   params: Promise<{ slug: string }>;
 }) {
+  // Retrieve the product id from the URL slug.
   const { slug } = use(params);
-
-  // Convert slug to number
   const productId = parseInt(slug);
+  const product = dummyProducts[productId];
+
+  // State to hold the current main image (initialized with the default product image)
+  const [selectedImage, setSelectedImage] = useState(product.image);
+
+  // Determine the index of the current image in the variants array.
+  const currentIndex =
+    product.variants?.findIndex((v) => v === selectedImage) ?? 0;
+  const effectiveIndex = currentIndex === -1 ? 0 : currentIndex;
+
+  // Function to go to the previous image. Wraps around if necessary.
+  const handlePrev = () => {
+    if (!product.variants) return;
+    let newIndex = effectiveIndex - 1;
+    if (newIndex < 0) {
+      newIndex = product.variants.length - 1;
+    }
+    setSelectedImage(product.variants[newIndex]);
+  };
+
+  // Function to go to the next image. Wraps around if necessary.
+  const handleNext = () => {
+    if (!product.variants) return;
+    let newIndex = effectiveIndex + 1;
+    if (newIndex >= product.variants.length) {
+      newIndex = 0;
+    }
+    setSelectedImage(product.variants[newIndex]);
+  };
 
   const options = [
     { id: 1, label: "L" },
@@ -72,7 +119,7 @@ export default function ProductDetail({
   ];
 
   const handleSelectionChange = (selectedId: number) => {
-    console.log("Selected:", selectedId);
+    console.log("Selected variant option:", selectedId);
   };
 
   return (
@@ -84,30 +131,56 @@ export default function ProductDetail({
             <span>Back to Catalog</span>
           </Link>
           <div className="mt-6 flex max-h-[32rem] w-full gap-4 rounded-lg dark:border-zinc-700">
+            {/* Main Image Display with Left/Right Navigation Buttons */}
             <div className="relative aspect-[3/4] w-full max-w-[24rem]">
               <Image
-                src={dummyProducts[productId].image}
+                src={selectedImage}
                 fill
                 alt="product-image"
                 className="rounded-l-lg object-contain"
               />
+              <button
+                onClick={handlePrev}
+                className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white/50 hover:bg-white p-2 rounded-full"
+              >
+                <ChevronLeft className="h-6 w-6 text-black" />
+              </button>
+              <button
+                onClick={handleNext}
+                className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white/50 hover:bg-white p-2 rounded-full"
+              >
+                <ChevronRight className="h-6 w-6 text-black" />
+              </button>
             </div>
+            {/* Variant Thumbnail Gallery */}
             <div className="w-[6rem] space-y-4">
-              <div className="aspect-square w-full border dark:border-zinc-700"></div>
-              <div className="aspect-square w-full border dark:border-zinc-700"></div>
-              <div className="aspect-square w-full border dark:border-zinc-700"></div>
+              {product.variants?.map((variantSrc, index) => (
+                <div
+                  key={index}
+                  onClick={() => setSelectedImage(variantSrc)}
+                  className="relative aspect-square w-full border dark:border-zinc-700 cursor-pointer"
+                >
+                  <Image
+                    src={variantSrc}
+                    fill
+                    alt={`variant-${index}`}
+                    className="object-cover"
+                  />
+                </div>
+              ))}
             </div>
           </div>
+          {/* Mobile view details */}
           <div className="mt-6 w-full min-w-[24rem] lg:hidden">
-            <p className="text-3xl">{dummyProducts[productId].title}</p>
+            <p className="text-3xl">{product.title}</p>
             <div className="mt-1 flex gap-8">
               <div className="flex items-center gap-2">
                 <Heart className="h-4 w-4 text-red-500" />
-                <span>Likes: {dummyProducts[productId].likes}</span>
+                <span>Likes: {product.likes}</span>
               </div>
               <div className="flex items-center gap-2">
                 <ShoppingCart className="h-4 w-4 text-green-500" />
-                <span>Sold: {dummyProducts[productId].sold}</span>
+                <span>Sold: {product.sold}</span>
               </div>
             </div>
             <p className="mt-4 text-2xl">$19.99 - $24.99</p>
@@ -116,33 +189,30 @@ export default function ProductDetail({
               <span className="mt-1 text-lg font-light">Order Now</span>
             </Button>
           </div>
-
           <div className="mt-6">
             <p className="text-lg">Description</p>
-            <p>{dummyProducts[productId].description}</p>
+            <p>{product.description}</p>
           </div>
         </div>
-
-        <div className="w-[32rem]">
+        <div className="w-full lg:w-[32rem]">
           <div className="hidden lg:block">
-            <p className="text-3xl">{dummyProducts[productId].title}</p>
+            <p className="text-3xl">{product.title}</p>
             <div className="mt-1 flex gap-8">
               <div className="flex items-center gap-2">
                 <Heart className="h-4 w-4 text-red-500" />
-                <span>Likes: {dummyProducts[productId].likes}</span>
+                <span>Likes: {product.likes}</span>
               </div>
               <div className="flex items-center gap-2">
                 <ShoppingCart className="h-4 w-4 text-green-500" />
-                <span>Sold: {dummyProducts[productId].sold}</span>
+                <span>Sold: {product.sold}</span>
               </div>
             </div>
-            <p className="mt-4 text-2xl">{dummyProducts[productId].title}</p>
+            <p className="mt-4 text-2xl">{product.title}</p>
           </div>
           <Button className="mt-4 hidden justify-start rounded-none bg-green-400 px-6 py-8 shadow-none dark:bg-green-400 dark:text-custom-dark lg:flex">
             <FaShoppingBag className="text-2xl" />
             <span className="mt-1 text-lg font-light">Order Now</span>
           </Button>
-
           <div className="lg:mt-6">
             <p className="mb-2">Variant</p>
             <CardRadioButton
@@ -153,7 +223,7 @@ export default function ProductDetail({
           </div>
           <div className="mt-6">
             <div className="flex w-full max-w-sm flex-col space-y-2">
-              <p className="">Quantity</p>
+              <p>Quantity</p>
               <Input
                 className="w-16 shadow-none dark:border-zinc-700"
                 type="number"
