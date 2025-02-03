@@ -16,8 +16,8 @@ import Image from "next/image";
 export default function page() {
   return (
     <>
-      <div className="container mx-auto flex max-w-screen-md flex-col items-start justify-start gap-8 px-4 py-8">
-        <Link href="/" className="flex items-center gap-2">
+      <div className="container mx-auto flex max-w-screen-md flex-col items-start justify-start gap-8 lg:px-4 lg:py-8 px-2 py-6">
+        <Link href="/" className="flex items-center gap-2 ms-2">
           <FaArrowLeft />
           <span>Back to Catalog</span>
         </Link>
@@ -46,28 +46,28 @@ export default function page() {
             </p>
           </div>
         </div>
-        <div className="w-full rounded-lg p-4">
+        <div className="w-full rounded-lg p-2 md:p-3">
           <p>Order Stats</p>
-          <div className="mt-4 flex items-center justify-center gap-4">
-            <div className="flex w-fit flex-col items-center justify-center gap-1 rounded-md border p-4">
-              <p>Pending</p>
+          <div className="mt-4 flex items-center justify-center md:gap-4 gap-3">
+            <div className="flex w-fit flex-col items-center justify-center gap-1 rounded-md border p-2 md:p-4">
+              <p className="text-sm md:text-base">Pending</p>
               <span className="text-2xl">0</span>
             </div>
-            <div className="flex w-fit flex-col items-center justify-center gap-1 rounded-md border p-4">
-              <p>Shipping</p>
+            <div className="flex w-fit flex-col items-center justify-center gap-1 rounded-md border p-2 md:p-4">
+              <p className="text-sm md:text-base">Shipping</p>
               <span className="text-2xl">0</span>
             </div>
-            <div className="flex w-fit flex-col items-center justify-center gap-1 rounded-md border p-4">
-              <p>Complete</p>
+            <div className="flex w-fit flex-col items-center justify-center gap-1 rounded-md border p-2 md:p-4">
+              <p className="text-sm md:text-base">Complete</p>
               <span className="text-2xl">0</span>
             </div>
-            <div className="flex w-fit flex-col items-center justify-center gap-1 rounded-md border p-4">
-              <p>Canceled</p>
+            <div className="flex w-fit flex-col items-center justify-center gap-1 rounded-md border p-2 md:p-4">
+              <p className="text-sm md:text-base">Canceled</p>
               <span className="text-2xl">0</span>
             </div>
           </div>
         </div>
-        <div className="h-[24rem] w-full rounded-lg p-4">
+        <div className="h-[24rem] w-full rounded-lg  p-2 md:p-3">
           <p>Purchase History</p>{" "}
           <div className="mt-4">
             <Table>

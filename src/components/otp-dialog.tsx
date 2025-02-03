@@ -1,4 +1,6 @@
-import { useState } from "react";
+"use client";
+import React, { useState } from "react";
+
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
 import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "./ui/input-otp";
 import { DialogDescription } from "@radix-ui/react-dialog";

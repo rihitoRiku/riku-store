@@ -1,3 +1,6 @@
+"use client"
+import * as React from "react";
+
 export function Footer() {
   return (
     <footer className="bg-background py-8">

@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import React, { useState } from "react";
+
 import { Register } from "./register";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -67,7 +68,7 @@ export function Login() {
               <Input
                 id="email"
                 placeholder="email@example.com"
-                className="py-5 border dark:border-zinc-800"
+                className="border py-5 dark:border-zinc-800"
                 {...form.register("email")}
               />
               {form.formState.errors.email && (
@@ -84,7 +85,7 @@ export function Login() {
                   id="password"
                   type={showPassword ? "text" : "password"}
                   placeholder="••••••••"
-                  className="py-5 border dark:border-zinc-800"
+                  className="border py-5 dark:border-zinc-800"
                   {...form.register("password")}
                 />
                 <button
@@ -111,7 +112,11 @@ export function Login() {
                 Login
               </Button>
 
-              <Button type="button" className="w-full" onClick={handleOpenRegister}>
+              <Button
+                type="button"
+                className="w-full"
+                onClick={handleOpenRegister}
+              >
                 Register
               </Button>
             </div>
