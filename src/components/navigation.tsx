@@ -1,4 +1,6 @@
 "use client";
+import React, { useState } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Login } from "./login";
@@ -9,12 +11,19 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { ModeToggle } from "@/components/darkmode-toggle";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { HiShoppingCart } from "react-icons/hi2";
 
 export function Navigation() {
-  const isLoggedIn = true; // TODO: Replace with actual auth state
+  const isLoggedIn = false; // TODO: Replace with actual auth state
+  const [isLogoutOpen, setIsLogoutOpen] = useState(false);
 
   return (
     <div className="bg-background w-full">
@@ -51,8 +60,16 @@ export function Navigation() {
                 align="end"
                 forceMount
               >
-                <DropdownMenuItem> <Link className="w-full" href="/dashboard">Dashboard</Link></DropdownMenuItem>
-                <DropdownMenuItem className="text-red-600">
+                <DropdownMenuItem>
+                  {" "}
+                  <Link className="w-full" href="/dashboard">
+                    Dashboard
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  className="text-red-600"
+                  onClick={() => setIsLogoutOpen(true)}
+                >
                   Logout
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -62,6 +79,21 @@ export function Navigation() {
           )}
           <ModeToggle />
         </div>
+
+        <Dialog open={isLogoutOpen} onOpenChange={setIsLogoutOpen}>
+          <DialogContent className="max-w-[24rem] rounded-lg border-none bg-custom-cream dark:bg-custom-dark">
+            <DialogHeader>
+              <DialogTitle className="text-2xl">Logout?</DialogTitle>
+              <div className="">
+                <p className="mb-4 text-sm">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Quidem nesciunt reprehenderit consequuntur doloremque ipsum?
+                </p>
+                <Button className="text-white w-[8rem] sm:float-end float-none mx-auto dark:bg-red-400 bg-red-400">Confirm</Button>
+              </div>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
       </div>
     </div>
   );
