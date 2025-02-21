@@ -1,4 +1,6 @@
-import React from "react";
+"use client"
+import React, {useEffect} from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa6";
 import {
@@ -12,8 +14,25 @@ import {
 } from "@/components/ui/table";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from "next/image";
+import { supabase } from "./../../lib/supabaseClient";
 
 export default function page() {
+  const router = useRouter();
+  useEffect(() => {
+    const checkSession = async () => {
+      const { data, error } = await supabase.auth.getSession();
+      console.log("Dashboard session:", data.session);
+
+      if (error || !data.session) {
+        console.error("No session, redirecting to login");
+        router.push("/");
+        return;
+      }
+
+      console.log("User:", data.session.user);
+    };
+    checkSession();
+  }, [router]);
   return (
     <>
       <div className="container mx-auto flex max-w-screen-md flex-col items-start justify-start gap-8 lg:px-4 lg:py-8 px-2 py-6">
