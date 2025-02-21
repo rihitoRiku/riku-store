@@ -1,8 +1,10 @@
 "use client";
-import React, { useState } from "react";
 
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation"; // Use this for App Router
+import { supabase } from "./../lib/supabaseClient"; // Adjust path
 import { Login } from "./login";
 import { Button } from "@/components/ui/button";
 import {
@@ -22,8 +24,57 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { HiShoppingCart } from "react-icons/hi2";
 
 export function Navigation() {
-  const isLoggedIn = false; // TODO: Replace with actual auth state
-  const [isLogoutOpen, setIsLogoutOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login state
+  const [isLogoutOpen, setIsLogoutOpen] = useState(false); // Logout dialog state
+  const router = useRouter();
+
+  // Check session on mount and update login state
+  useEffect(() => {
+    const checkSession = async () => {
+      const { data, error } = await supabase.auth.getSession();
+      if (error) {
+        console.error("Error fetching session:", error.message);
+        setIsLoggedIn(false);
+        return;
+      }
+      setIsLoggedIn(!!data.session); // Set true if session exists
+      console.log("Initial session:", data.session);
+    };
+
+    checkSession();
+
+    // Listen for auth state changes (e.g., login/logout)
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        console.log("Auth event:", event, session);
+        setIsLoggedIn(!!session);
+        if (event === "SIGNED_OUT") {
+          router.push("/"); // Redirect to home after logout
+        }
+      }
+    );
+
+    // Cleanup listener on unmount
+    return () => {
+      authListener.subscription.unsubscribe();
+    };
+  }, [router]);
+
+  // Handle logout
+  const handleLogout = async () => {
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) throw error;
+      setIsLogoutOpen(false); // Close dialog
+      setIsLoggedIn(false);   // Update state
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        console.error("Logout error:", err.message);
+      } else {
+        console.error("Logout error:", String(err));
+      }
+    }
+  };
 
   return (
     <div className="bg-background w-full">
@@ -37,7 +88,9 @@ export function Navigation() {
               height={40}
               className="rounded-full"
             />
-            <span className="text-lg font-medium">Good afternoon, Rihito</span>
+            <span className="text-lg font-medium">
+              Good afternoon, {isLoggedIn ? "Rihito" : "Guest"}
+            </span>
           </div>
         </Link>
 
@@ -61,7 +114,6 @@ export function Navigation() {
                 forceMount
               >
                 <DropdownMenuItem>
-                  {" "}
                   <Link className="w-full" href="/dashboard">
                     Dashboard
                   </Link>
@@ -86,10 +138,15 @@ export function Navigation() {
               <DialogTitle className="text-2xl">Logout?</DialogTitle>
               <div className="">
                 <p className="mb-4 text-sm">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Quidem nesciunt reprehenderit consequuntur doloremque ipsum?
+                  Are you sure you want to logout? You’ll need to sign in again
+                  to access your account.
                 </p>
-                <Button className="text-white w-[8rem] sm:float-end float-none mx-auto dark:bg-red-400 bg-red-400">Confirm</Button>
+                <Button
+                  className="text-white w-[8rem] sm:float-end float-none mx-auto dark:bg-red-400 bg-red-400"
+                  onClick={handleLogout}
+                >
+                  Confirm
+                </Button>
               </div>
             </DialogHeader>
           </DialogContent>

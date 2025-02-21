@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { supabase } from '../lib/supabaseClient';
 
 import { Register } from "./register";
 import { useForm } from "react-hook-form";
@@ -25,6 +26,25 @@ export function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+
+  const handleGoogleLogin = async () => {
+    try {
+      const { error, data } = await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: {
+          redirectTo: "http://localhost:3000/auth/callback", // Next.js callback
+          queryParams: {
+            access_type: "offline",
+            prompt: "consent",
+          },
+        },
+      });
+      console.log("OAuth initiated:", { error, data });
+      if (error) throw error;
+    } catch (err) {
+      console.error("Login error:", err);
+    }
+  };
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -132,7 +152,7 @@ export function Login() {
               </div>
             </div>
 
-            <Button className="w-full" type="button">
+            <Button onClick={handleGoogleLogin} className="w-full" type="button">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
