@@ -3,8 +3,8 @@ import * as React from "react";
 
 export function Footer() {
   return (
-    <footer className="bg-background py-8">
-      <div className="container max-w-screen-xl mx-auto px-4">
+    <footer className="py-8">
+      <div className="container max-w-screen-xl mx-auto px-4 border-t py-8">
         <div className="flex flex-col items-center gap-4">
           <p className="text-center text-muted-foreground max-w-[24rem]">
             Thank you for your trust using our store. Don't forget to follow for more offers:

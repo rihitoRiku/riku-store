@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { supabase } from '../lib/supabaseClient';
+import { supabase } from "../lib/supabaseClient";
 
 import { Register } from "./register";
 import { useForm } from "react-hook-form";
@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import Loader from "./loader";
 import { HiEye, HiEyeSlash } from "react-icons/hi2";
 
 const formSchema = z.object({
@@ -26,8 +27,11 @@ export function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleGoogleLogin = async () => {
+    setIsLoginOpen(false);
+    setIsLoading(true);
     try {
       const { error, data } = await supabase.auth.signInWithOAuth({
         provider: "google",
@@ -39,9 +43,11 @@ export function Login() {
           },
         },
       });
+      setIsLoading(false);
       console.log("OAuth initiated:", { error, data });
       if (error) throw error;
     } catch (err) {
+      setIsLoading(false);
       console.error("Login error:", err);
     }
   };
@@ -70,7 +76,8 @@ export function Login() {
 
   return (
     <>
-      <Button variant="default" onClick={() => setIsLoginOpen(true)}>
+      {isLoading && <Loader />}
+      <Button variant="default" className="md:py-6 md:px-8 md:text-lg" onClick={() => setIsLoginOpen(true)}>
         Login
       </Button>
 
@@ -152,7 +159,11 @@ export function Login() {
               </div>
             </div>
 
-            <Button onClick={handleGoogleLogin} className="w-full" type="button">
+            <Button
+              onClick={handleGoogleLogin}
+              className="w-full"
+              type="button"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"

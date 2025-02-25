@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation"; // Use this for App Router
-import { supabase } from "./../lib/supabaseClient"; // Adjust path
+import { useRouter } from "next/navigation";
+import { supabase } from "./../lib/supabaseClient";
 import { Login } from "./login";
 import { Button } from "@/components/ui/button";
 import {
@@ -33,12 +33,10 @@ export function Navigation() {
     const checkSession = async () => {
       const { data, error } = await supabase.auth.getSession();
       if (error) {
-        console.error("Error fetching session:", error.message);
         setIsLoggedIn(false);
         return;
       }
       setIsLoggedIn(!!data.session); // Set true if session exists
-      console.log("Initial session:", data.session);
     };
 
     checkSession();
@@ -86,10 +84,10 @@ export function Navigation() {
               alt="Logo"
               width={40}
               height={40}
-              className="rounded-full"
+              className="rounded-full md:w-[60px] md:h-[60px]"
             />
-            <span className="text-lg font-medium">
-              Good afternoon, {isLoggedIn ? "Rihito" : "Guest"}
+            <span className="text-lg md:text-2xl font-medium">
+              Riku Store: At Your Service!
             </span>
           </div>
         </Link>

@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/table";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from "next/image";
+import { showToast } from "@/lib/utils/toast";
 import { supabase } from "./../../lib/supabaseClient";
 
 export default function page() {
@@ -21,15 +22,17 @@ export default function page() {
   useEffect(() => {
     const checkSession = async () => {
       const { data, error } = await supabase.auth.getSession();
-      console.log("Dashboard session:", data.session);
+      // console.log("Dashboard session:", data.session);
 
       if (error || !data.session) {
-        console.error("No session, redirecting to login");
+        // console.error("No session, redirecting to login");
+        showToast.error("Login first, please!")
+        
         router.push("/");
         return;
       }
 
-      console.log("User:", data.session.user);
+      // console.log("User:", data.session.user);
     };
     checkSession();
   }, [router]);

@@ -5,6 +5,7 @@ import "./globals.css"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import NextTopLoader from "nextjs-toploader";
+import { ToastProvider } from "@/components/ui/toast"
 
 const rethinkSans = Rethink_Sans({
   variable: "--font-rethink-sans",
@@ -33,10 +34,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning={true}>
       <body
-        className={`font-sans ${rethinkSans.variable} ${passionsConflict.variable} ${inter.variable} antialiased`}
+        className={`font-sans ${rethinkSans.variable} ${passionsConflict.variable} ${inter.variable} antialiased`} suppressHydrationWarning={true}
       >
+        <ToastProvider />
         {/* Top Loader */}
         <NextTopLoader
           color="#16a34a"
