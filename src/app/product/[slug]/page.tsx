@@ -10,7 +10,6 @@ import { FaShoppingBag } from "react-icons/fa";
 import { FaArrowLeft } from "react-icons/fa6";
 import { Heart, ShoppingCart, ChevronLeft, ChevronRight } from "lucide-react";
 
-// Updated dummyProducts with a "variants" property for each product.
 const dummyProducts = [
   {
     id: 0,
