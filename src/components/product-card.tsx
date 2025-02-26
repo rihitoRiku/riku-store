@@ -23,9 +23,9 @@ export function ProductCard({
   likes,
 }: ProductCardProps) {
   return (
-    <div className="bg-background rounded-lg shadow-sm transition-shadow hover:shadow-md">
+    <div className="bg-background rounded-lg">
       {/* Image container must be relative for the "fill" prop to work correctly */}
-      <div className="relative aspect-square overflow-hidden rounded-t-lg bg-custom-cream dark:bg-zinc-800">
+      <div className="relative aspect-square overflow-hidden rounded-xl bg-custom-cream dark:bg-zinc-800">
         <Image
           src={image}
           alt={title}
