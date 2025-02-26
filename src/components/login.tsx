@@ -79,7 +79,7 @@ export function Login() {
       {isLoading && <Loader />}
       <Button
         variant="default"
-        className="rounded-xl bg-green-600 dark:bg-green-600 text-white shadow-none md:px-8 md:py-6 md:text-lg"
+        className="rounded-2xl bg-custom-cream dark:bg-green-400 shadow-none md:px-8 md:py-6 md:text-lg text-black"
         onClick={() => setIsLoginOpen(true)}
       >
         Login
