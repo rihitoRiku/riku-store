@@ -92,7 +92,7 @@ export function Navigation() {
           </div>
         </Link>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 md:gap-4">
           {isLoggedIn ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>

@@ -8,6 +8,15 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 const dummyProducts = [
   {
@@ -55,8 +64,16 @@ const dummyProducts = [
 export default function Home() {
   return (
     <div className="container mx-auto max-w-screen-xl px-4 py-8">
+      {/* Landing Page */}
+      <div className="mb-8 min-h-[75vh] pt-28 text-center font-inter">
+        <h1 className="text-4xl md:text-5xl">
+          We'll build your small business website with lovely design and
+          afforable price
+        </h1>
+      </div>
+
       {/* Carousel Section */}
-      <div className="mb-8">
+      <div className="mb-16">
         <Carousel
           plugins={[
             Autoplay({
@@ -69,7 +86,7 @@ export default function Home() {
             {Array.from({ length: 3 }).map((_, index) => (
               <CarouselItem key={index} className="md:basis-2/3 lg:basis-1/2">
                 <div className="p-1">
-                  <div className="relative aspect-video overflow-hidden rounded-lg bg-custom-cream dark:bg-zinc-800">
+                  <div className="relative aspect-video overflow-hidden rounded-2xl bg-custom-cream dark:bg-zinc-800">
                     <Image
                       src={`/assets/items/car-${index + 1}.jpg`}
                       alt={`Carousel Image ${index + 1}`}
@@ -85,37 +102,101 @@ export default function Home() {
       </div>
 
       {/* Description Section */}
-      <div className="mb-8 text-center font-inter">
-        <h1 className="text-3xl">What do We Offer?</h1>
+      <div className="">
+        <div className="mb-8 text-center font-inter">
+          <h1 className="text-3xl">What do We Offer?</h1>
+        </div>
+        <div className="mb-12 flex flex-col gap-8 rounded-3xl p-0 md:bg-custom-cream md:p-8 md:dark:bg-zinc-900 lg:flex-row">
+          <div className="grid max-h-[32rem] min-h-[26rem] w-full grid-cols-2 gap-4 md:aspect-[4/3]">
+            <div className="row-span-2 rounded-2xl bg-custom-cream p-4 dark:bg-zinc-800 md:bg-white md:p-6">
+              <h3 className="mb-2 text-3xl font-medium md:text-4xl">
+                Build Your Website
+              </h3>
+              <p className="text-sm">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
+                amet nihil nemo voluptatem accusamus fugit!
+              </p>
+            </div>
+            <div className="rounded-2xl bg-custom-cream p-4 dark:bg-zinc-800 md:bg-white md:p-6">
+              <h3 className="mb-2 text-lg font-medium md:text-2xl">
+                Digital Products
+              </h3>
+              <p className="text-sm">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Placeat unde, saepe iste nostrum dolor assumenda!
+              </p>
+            </div>
+            <div className="rounded-2xl bg-custom-cream p-4 dark:bg-zinc-800 md:bg-white md:p-6">
+              <h3 className="mb-2 text-lg font-medium md:text-2xl">
+                Other Goods
+              </h3>
+              <p className="text-sm">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste
+                ipsum enim perferendis?
+              </p>
+            </div>
+          </div>
+          <div className="max-w-[32rem]">
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut non
+              quaerat ut, aliquid perspiciatis fugiat velit vel tempore nulla
+              accusamus.
+            </p>
+          </div>
+        </div>
       </div>
-      <div className="flex md:flex-row flex-col lg:flex-row gap-8 mb-12">
-        <div className=" grid md:aspect-[4/3] min-h-[24rem] w-full max-h-[28rem] gap-4 grid-cols-2">
-          <div className="rounded-lg bg-custom-cream p-4 dark:bg-zinc-800 row-span-2">
-            <h3 className="mb-2 text-lg sm:text-3xl font-semibold">Build Your Website</h3>
-            <p className="text-sm">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus amet nihil nemo voluptatem accusamus fugit!
-            </p>
-          </div>
-          <div className="rounded-lg bg-custom-cream p-4 dark:bg-zinc-800">
-            <h3 className="mb-2 text-lg sm:text-2xl font-semibold">Digital Products</h3>
-            <p className="text-sm">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat unde, saepe iste nostrum dolor assumenda!
-            </p>
-          </div>
-          <div className="rounded-lg bg-custom-cream p-4 dark:bg-zinc-800">
-            <h3 className="mb-2 text-lg sm:text-2xl font-semibold">Other Goods</h3>
-            <p className="text-sm">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste ipsum enim perferendis?
-            </p>
-          </div>
+
+      {/* Description Section */}
+      <div className="mb-8 min-h-screen text-center font-inter">
+        <h1 className="mb-8 text-3xl md:mb-12 md:text-4xl">
+          Choose Your Website Plans
+        </h1>
+        <div className="flex flex-col items-center justify-center gap-4 md:flex-row lg:gap-8">
+          <Card className="flex min-h-[24rem] w-full flex-col justify-between rounded-2xl border border-none border-green-200 bg-green-200 shadow-none dark:border-green-800 dark:bg-green-800 md:max-w-[20rem]">
+            <CardHeader>
+              <CardTitle className="text-2xl">Basic Growth</CardTitle>
+              <CardDescription>
+                Rekomendasi untuk UMKM/Yayasan yang baru memulai Go-Digital
+              </CardDescription>
+            </CardHeader>
+            <CardContent></CardContent>
+            <CardFooter className="flex justify-between">
+              <Button className="h-12 w-full rounded-xl border border-none bg-white dark:bg-green-700 shadow-none">
+                Order Now
+              </Button>
+            </CardFooter>
+          </Card>
+          <Card className="flex min-h-[24rem] w-full flex-col justify-between rounded-2xl shadow-none md:max-w-[20rem]">
+            <CardHeader>
+              <CardTitle className="text-2xl">Premium-Plus</CardTitle>
+              <CardDescription>
+                Rekomendasi untuk UMKM/Yayasan yang baru memulai Go-Digital
+              </CardDescription>
+            </CardHeader>
+            <CardContent></CardContent>
+            <CardFooter className="flex justify-between">
+              <Button className="h-12 w-full rounded-xl border shadow-none">
+                Order Now
+              </Button>
+            </CardFooter>
+          </Card>
+          <Card className="flex min-h-[24rem] w-full flex-col justify-between rounded-2xl shadow-none md:max-w-[20rem]">
+            <CardHeader>
+              <CardTitle className="text-2xl">Entahusiast</CardTitle>
+              <CardDescription>
+                Rekomendasi untuk UMKM/Yayasan yang baru memulai Go-Digital
+              </CardDescription>
+            </CardHeader>
+            <CardContent></CardContent>
+            <CardFooter className="flex justify-between">
+              <Button className="h-12 w-full rounded-xl border shadow-none">
+                Order Now
+              </Button>
+            </CardFooter>
+          </Card>
         </div>
-        <div className="max-w-[32rem]">
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut non
-            quaerat ut, aliquid perspiciatis fugiat velit vel tempore nulla
-            accusamus.
-          </p>
-        </div>
+
+        {/* <h3 className="text-xl md:text-2xl">Portfolio Collection</h3> */}
       </div>
 
       {/* Product Grid Section */}
@@ -143,6 +224,10 @@ export default function Home() {
 
       <div className="mb-12 text-center font-inter">
         <h1 className="text-2xl lg:text-3xl">Why Choose Us?</h1>
+      </div>
+
+      <div className="mb-12 text-center font-inter">
+        <h1 className="text-2xl lg:text-3xl">Testimonials</h1>
       </div>
     </div>
   );
