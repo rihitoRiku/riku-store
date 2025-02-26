@@ -77,7 +77,11 @@ export function Login() {
   return (
     <>
       {isLoading && <Loader />}
-      <Button variant="default" className="md:py-6 md:px-8 md:text-lg" onClick={() => setIsLoginOpen(true)}>
+      <Button
+        variant="default"
+        className="rounded-xl bg-green-600 dark:bg-green-600 text-white shadow-none md:px-8 md:py-6 md:text-lg"
+        onClick={() => setIsLoginOpen(true)}
+      >
         Login
       </Button>
 
