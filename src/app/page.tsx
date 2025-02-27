@@ -17,6 +17,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { Marquee } from "@/components/magicui/marquee";
+import { BlurFade } from "@/components/magicui/blur-fade";
+import { TextAnimate } from "@/components/magicui/text-animate";
 
 const dummyProducts = [
   {
@@ -61,15 +65,99 @@ const dummyProducts = [
   },
 ];
 
+const reviews = [
+  {
+    name: "Jack",
+    username: "@jack",
+    body: "I've never seen anything like this before. It's amazing. I love it.",
+    img: "https://avatar.vercel.sh/jack",
+  },
+  {
+    name: "Jill",
+    username: "@jill",
+    body: "I don't know what to say. I'm speechless. This is amazing.",
+    img: "https://avatar.vercel.sh/jill",
+  },
+  {
+    name: "John",
+    username: "@john",
+    body: "I'm at a loss for words. This is amazing. I love it.",
+    img: "https://avatar.vercel.sh/john",
+  },
+  {
+    name: "Jane",
+    username: "@jane",
+    body: "I'm at a loss for words. This is amazing. I love it.",
+    img: "https://avatar.vercel.sh/jane",
+  },
+  {
+    name: "Jenny",
+    username: "@jenny",
+    body: "I'm at a loss for words. This is amazing. I love it.",
+    img: "https://avatar.vercel.sh/jenny",
+  },
+  {
+    name: "James",
+    username: "@james",
+    body: "I'm at a loss for words. This is amazing. I love it.",
+    img: "https://avatar.vercel.sh/james",
+  },
+];
+
+const ReviewCard = ({
+  img,
+  name,
+  username,
+  body,
+}: {
+  img: string;
+  name: string;
+  username: string;
+  body: string;
+}) => {
+  return (
+    <figure
+      className={cn(
+        "relative h-full w-64 cursor-pointer overflow-hidden rounded-xl border p-4",
+        // light styles
+        "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
+        // dark styles
+        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
+      )}
+    >
+      <div className="flex flex-row items-center gap-2">
+        <img className="rounded-full" width="32" height="32" alt="" src={img} />
+        <div className="flex flex-col">
+          <figcaption className="text-sm font-medium dark:text-white">
+            {name}
+          </figcaption>
+          <p className="text-xs font-medium dark:text-white/40">{username}</p>
+        </div>
+      </div>
+      <blockquote className="mt-2 text-sm">{body}</blockquote>
+    </figure>
+  );
+};
+
+const images = Array.from({ length: 8 }, (_, i) => {
+  // Random width between 600 and 1000 pixels (for example)
+  const width = Math.floor(Math.random() * (1000 - 600 + 1)) + 600;
+  // Random height between 400 and width (ensuring landscape)
+  const height = Math.floor(Math.random() * (width - 400 + 1)) + 400;
+  return `/assets/webdesign/${i + 1}.png`;
+});
+
 export default function Home() {
+  const firstRow = reviews.slice(0, reviews.length / 2);
+  const secondRow = reviews.slice(reviews.length / 2);
   return (
     <div className="container mx-auto max-w-screen-xl px-4 py-8">
       {/* Landing Page */}
-      <div className="mb-8 min-h-[75vh] pt-28 text-center font-inter">
-        <h1 className="text-4xl md:text-5xl">
+      <div className="mb-8 min-h-[44rem] pt-28 text-center font-inter text-4xl md:text-5xl">
+        <TextAnimate animation="blurInUp" by="character" once>
           We'll build your small business website with lovely design and
           afforable price
-        </h1>
+        </TextAnimate>
       </div>
 
       {/* Carousel Section */}
@@ -103,14 +191,14 @@ export default function Home() {
 
       {/* Description Section */}
       <div className="mb-24">
-        {/* <div className="mb-8 text-center font-inter">
+        <div className="mb-8 text-center font-inter">
           <h1 className="text-3xl">What do We Offer?</h1>
-        </div> */}
+        </div>
         <div className="flex flex-col gap-8 rounded-3xl p-0 md:bg-custom-cream md:p-8 md:dark:bg-neutral-900 lg:flex-row">
-          <div className="grid max-h-[32rem] min-h-[26rem] w-full grid-cols-2 md:aspect-[4/3] md:gap-4">
+          <div className="order-2 grid max-h-[32rem] min-h-[26rem] w-full grid-cols-2 md:order-1 md:aspect-[4/3] md:gap-4">
             <div className="row-span-2 border-r bg-white p-4 dark:border-green-200 dark:bg-[#121212] md:rounded-2xl md:bg-white md:p-6 md:dark:border-none md:dark:bg-neutral-800">
               <h3 className="mb-2 text-3xl font-medium md:text-4xl">
-                Build Your Website
+                Full Coding with Latest Tech
               </h3>
               <p className="text-sm">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
@@ -119,7 +207,7 @@ export default function Home() {
             </div>
             <div className="border-b bg-white p-4 dark:border-green-200 dark:bg-[#121212] md:rounded-2xl md:bg-white md:p-6 md:dark:border-none md:dark:bg-neutral-800">
               <h3 className="mb-2 text-lg font-medium md:text-2xl">
-                Digital Products
+                Modern Design
               </h3>
               <p className="text-sm">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -127,16 +215,14 @@ export default function Home() {
               </p>
             </div>
             <div className="bg-white p-4 dark:bg-[#121212] md:rounded-2xl md:bg-white md:p-6 md:dark:bg-neutral-800">
-              <h3 className="mb-2 text-lg font-medium md:text-2xl">
-                Other Goods
-              </h3>
+              <h3 className="mb-2 text-lg font-medium md:text-2xl">Cheap!</h3>
               <p className="text-sm">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste
                 ipsum enim perferendis?
               </p>
             </div>
           </div>
-          <div className="max-w-[32rem]">
+          <div className="order-1 w-full text-center text-xl md:order-2 lg:max-w-[32rem]">
             <p>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut non
               quaerat ut, aliquid perspiciatis fugiat velit vel tempore nulla
@@ -146,57 +232,79 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Cards Section */}
-      <div className="mb-20 min-h-screen text-center font-inter">
+      {/* Cards Plans Section */}
+      <div className="mb-20 text-center font-inter">
         <h1 className="mb-8 text-3xl md:mb-12 md:text-4xl">
           Choose Your Website Plan
         </h1>
-        <div className="flex flex-col items-center justify-center gap-4 px-8 md:flex-row md:px-0 lg:gap-8">
-          <Card className="flex min-h-[24rem] w-full flex-col justify-between rounded-2xl border-green-200 bg-custom-cream shadow-none dark:border-green-200 dark:bg-neutral-900 md:max-w-[20rem]">
-            <CardHeader>
-              <CardTitle className="text-2xl">Basic Growth</CardTitle>
-              <CardDescription>
-                Rekomendasi untuk UMKM/Yayasan yang baru memulai Go-Digital
-              </CardDescription>
-            </CardHeader>
-            <CardContent></CardContent>
-            <CardFooter className="flex justify-between">
-              <Button className="h-12 w-full rounded-xl border border-none bg-white shadow-none dark:border-green-400">
-                Order Now
-              </Button>
-            </CardFooter>
-          </Card>
-          <Card className="flex min-h-[24rem] w-full flex-col justify-between rounded-2xl shadow-none dark:border-custom-secdark dark:bg-neutral-900 md:max-w-[20rem]">
-            <CardHeader>
-              <CardTitle className="text-2xl">Premium-Plus</CardTitle>
-              <CardDescription>
-                Rekomendasi untuk UMKM/Yayasan yang baru memulai Go-Digital
-              </CardDescription>
-            </CardHeader>
-            <CardContent></CardContent>
-            <CardFooter className="flex justify-between">
-              <Button className="h-12 w-full rounded-xl border dark:border-none shadow-none dark:border-custom-secdark">
-                Order Now
-              </Button>
-            </CardFooter>
-          </Card>
-          <Card className="flex min-h-[24rem] w-full flex-col justify-between rounded-2xl shadow-none dark:border-custom-secdark dark:bg-neutral-900 md:max-w-[20rem]">
-            <CardHeader>
-              <CardTitle className="text-2xl">Entahusiast</CardTitle>
-              <CardDescription>
-                Rekomendasi untuk UMKM/Yayasan yang baru memulai Go-Digital
-              </CardDescription>
-            </CardHeader>
-            <CardContent></CardContent>
-            <CardFooter className="flex justify-between">
-              <Button className="h-12 w-full rounded-xl border dark:border-none shadow-none dark:border-custom-secdark">
-                Order Now
-              </Button>
-            </CardFooter>
-          </Card>
+        <div className="mx-auto mb-12 flex max-w-screen-lg flex-wrap gap-4">
+          <div className="flex min-w-64 flex-1 basis-64 items-center justify-center rounded sm:justify-end">
+            <Card className="flex min-h-[24rem] w-full flex-col justify-between rounded-2xl border-green-200 bg-custom-cream shadow-none dark:border-green-200 dark:bg-neutral-900 sm:max-w-[20rem] md:w-full lg:max-w-full">
+              <CardHeader>
+                <CardTitle className="text-2xl">Basic Growth</CardTitle>
+                <CardDescription>
+                  Cocok untuk personal/profil perusahaan kecil yang ingin
+                  memperkenalkan bisnisnya secara digital
+                </CardDescription>
+              </CardHeader>
+              <CardContent></CardContent>
+              <CardFooter className="flex justify-between">
+                <Button className="h-12 w-full rounded-xl border bg-white text-2xl shadow-none dark:border-none dark:border-custom-secdark">
+                  $25
+                </Button>
+              </CardFooter>
+            </Card>
+          </div>
+          <div className="flex min-w-64 flex-1 basis-64 items-center justify-center rounded sm:justify-start">
+            <Card className="flex min-h-[24rem] w-full flex-col justify-between rounded-2xl shadow-none dark:border-custom-secdark dark:bg-neutral-900 sm:max-w-[20rem] md:w-full lg:max-w-full">
+              <CardHeader>
+                <CardTitle className="text-2xl">Premium-Plus</CardTitle>
+                <CardDescription>
+                  Paket paling ideal untuk bisnis anda dengan dukungan berbagai
+                  fitur menarik
+                </CardDescription>
+              </CardHeader>
+              <CardContent></CardContent>
+              <CardFooter className="flex justify-between">
+                <Button className="h-12 w-full rounded-xl border text-xl shadow-none dark:border-none dark:border-custom-secdark">
+                  $50
+                </Button>
+              </CardFooter>
+            </Card>
+          </div>
+          <div className="flex min-w-64 flex-1 basis-64 items-center justify-center rounded">
+            <Card className="flex min-h-[24rem] w-full flex-col justify-between rounded-2xl shadow-none dark:border-custom-secdark dark:bg-neutral-900 sm:max-w-[20rem] md:w-full lg:max-w-full">
+              <CardHeader>
+                <CardTitle className="text-2xl">Entahusiast</CardTitle>
+                <CardDescription>Paket terbaik kami,</CardDescription>
+              </CardHeader>
+              <CardContent></CardContent>
+              <CardFooter className="flex justify-between">
+                <Button className="h-12 w-full rounded-xl border text-xl shadow-none dark:border-none dark:border-custom-secdark">
+                  $100
+                </Button>
+              </CardFooter>
+            </Card>
+          </div>
         </div>
 
-        {/* <h3 className="text-xl md:text-2xl">Portfolio Collection</h3> */}
+        {/* Instant Package Sections */}
+        <h1 className="mb-8 text-xl md:mb-12 md:text-2xl">
+          or instant package plan?
+        </h1>
+        <section id="photos">
+          <div className="columns-2 gap-4 sm:columns-3 md:columns-4">
+            {images.map((imageUrl, idx) => (
+              <BlurFade key={imageUrl} delay={0.25 + idx * 0.05} inView>
+                <img
+                  className="mb-4 size-full rounded-2xl object-contain"
+                  src={imageUrl}
+                  alt={`Random stock image ${idx + 1}`}
+                />
+              </BlurFade>
+            ))}
+          </div>
+        </section>
       </div>
 
       {/* Product Grid Section */}
@@ -227,7 +335,21 @@ export default function Home() {
       </div>
 
       <div className="mb-12 text-center font-inter">
-        <h1 className="text-2xl lg:text-3xl">Testimonials</h1>
+        <h1 className="mb-8 text-2xl lg:text-3xl">Testimonials</h1>
+        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+          <Marquee pauseOnHover className="[--duration:20s]">
+            {firstRow.map((review) => (
+              <ReviewCard key={review.username} {...review} />
+            ))}
+          </Marquee>
+          <Marquee reverse pauseOnHover className="[--duration:20s]">
+            {secondRow.map((review) => (
+              <ReviewCard key={review.username} {...review} />
+            ))}
+          </Marquee>
+          <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r"></div>
+          <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l"></div>
+        </div>
       </div>
     </div>
   );
