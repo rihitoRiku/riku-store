@@ -21,6 +21,7 @@ import { cn } from "@/lib/utils";
 import { Marquee } from "@/components/magicui/marquee";
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { TextAnimate } from "@/components/magicui/text-animate";
+import { RainbowButton } from "@/components/magicui/rainbow-button";
 
 const dummyProducts = [
   {
@@ -140,9 +141,7 @@ const ReviewCard = ({
 };
 
 const images = Array.from({ length: 8 }, (_, i) => {
-  // Random width between 600 and 1000 pixels (for example)
   const width = Math.floor(Math.random() * (1000 - 600 + 1)) + 600;
-  // Random height between 400 and width (ensuring landscape)
   const height = Math.floor(Math.random() * (width - 400 + 1)) + 400;
   return `/assets/webdesign/${i + 1}.png`;
 });
@@ -153,15 +152,18 @@ export default function Home() {
   return (
     <div className="container mx-auto max-w-screen-xl px-4 py-8">
       {/* Landing Page */}
-      <div className="mb-8 min-h-[44rem] pt-28 text-center font-inter text-4xl md:text-5xl">
-        <TextAnimate animation="blurInUp" by="character" once>
+      <div className="mb-8 min-h-[44rem] pt-28 text-center font-inter text-3xl sm:text-4xl md:text-5xl">
+        <TextAnimate className="mb-24" animation="slideUp" by="word" once>
           We'll build your small business website with lovely design and
           afforable price
         </TextAnimate>
+        <RainbowButton className="text-sm text-white dark:text-black md:py-6 md:text-lg">
+          Lets Get Started
+        </RainbowButton>
       </div>
 
       {/* Carousel Section */}
-      <div className="mb-16">
+      {/* <div className="mb-16">
         <Carousel
           plugins={[
             Autoplay({
@@ -187,17 +189,17 @@ export default function Home() {
             ))}
           </CarouselContent>
         </Carousel>
-      </div>
+      </div> */}
 
       {/* Description Section */}
       <div className="mb-24">
-        <div className="mb-8 text-center font-inter">
-          <h1 className="text-3xl">What do We Offer?</h1>
+        <div className="mb-6 text-center font-inter">
+          {/* <h1 className="text-3xl">What do We Offer?</h1> */}
         </div>
         <div className="flex flex-col gap-8 rounded-3xl p-0 md:bg-custom-cream md:p-8 md:dark:bg-neutral-900 lg:flex-row">
           <div className="order-2 grid max-h-[32rem] min-h-[26rem] w-full grid-cols-2 md:order-1 md:aspect-[4/3] md:gap-4">
             <div className="row-span-2 border-r bg-white p-4 dark:border-green-200 dark:bg-[#121212] md:rounded-2xl md:bg-white md:p-6 md:dark:border-none md:dark:bg-neutral-800">
-              <h3 className="mb-2 text-3xl font-medium md:text-4xl">
+              <h3 className="mb-2 md:mb-6 text-3xl font-medium md:text-4xl">
                 Full Coding with Latest Tech
               </h3>
               <p className="text-sm">
@@ -206,8 +208,8 @@ export default function Home() {
               </p>
             </div>
             <div className="border-b bg-white p-4 dark:border-green-200 dark:bg-[#121212] md:rounded-2xl md:bg-white md:p-6 md:dark:border-none md:dark:bg-neutral-800">
-              <h3 className="mb-2 text-lg font-medium md:text-2xl">
-                Modern Design
+              <h3 className="mb-2 md:mb-6 text-lg font-medium md:text-2xl">
+                Modern Trendy Design
               </h3>
               <p className="text-sm">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -215,14 +217,14 @@ export default function Home() {
               </p>
             </div>
             <div className="bg-white p-4 dark:bg-[#121212] md:rounded-2xl md:bg-white md:p-6 md:dark:bg-neutral-800">
-              <h3 className="mb-2 text-lg font-medium md:text-2xl">Cheap!</h3>
+              <h3 className="mb-2 md:mb-6 text-lg font-medium md:text-2xl">Special Price!</h3>
               <p className="text-sm">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste
-                ipsum enim perferendis?
+                Get a special discount by bringing your website project to us
+                during our early launch!
               </p>
             </div>
           </div>
-          <div className="order-1 w-full text-center text-xl md:order-2 lg:max-w-[32rem]">
+          <div className="order-1 w-full text-center text-lg md:order-2 lg:max-w-[32rem]">
             <p>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut non
               quaerat ut, aliquid perspiciatis fugiat velit vel tempore nulla
@@ -239,12 +241,11 @@ export default function Home() {
         </h1>
         <div className="mx-auto mb-12 flex max-w-screen-lg flex-wrap gap-4">
           <div className="flex min-w-64 flex-1 basis-64 items-center justify-center rounded sm:justify-end">
-            <Card className="flex min-h-[24rem] w-full flex-col justify-between rounded-2xl border-green-200 bg-custom-cream shadow-none dark:border-green-200 dark:bg-neutral-900 sm:max-w-[20rem] md:w-full lg:max-w-full">
+            <Card className="flex min-h-[24rem] w-full max-w-[20rem] flex-col justify-between rounded-2xl border-green-200 bg-custom-cream shadow-none dark:border-green-200 dark:bg-neutral-900 md:w-full lg:max-w-full">
               <CardHeader>
                 <CardTitle className="text-2xl">Basic Growth</CardTitle>
                 <CardDescription>
-                  Cocok untuk personal/profil perusahaan kecil yang ingin
-                  memperkenalkan bisnisnya secara digital
+                  Cocok untuk website personal dengan konten yang tidak terlalu banyak
                 </CardDescription>
               </CardHeader>
               <CardContent></CardContent>
@@ -256,12 +257,11 @@ export default function Home() {
             </Card>
           </div>
           <div className="flex min-w-64 flex-1 basis-64 items-center justify-center rounded sm:justify-start">
-            <Card className="flex min-h-[24rem] w-full flex-col justify-between rounded-2xl shadow-none dark:border-custom-secdark dark:bg-neutral-900 sm:max-w-[20rem] md:w-full lg:max-w-full">
+            <Card className="flex min-h-[24rem] w-full max-w-[20rem] flex-col justify-between rounded-2xl shadow-none dark:border-custom-secdark dark:bg-neutral-900 md:w-full lg:max-w-full">
               <CardHeader>
                 <CardTitle className="text-2xl">Premium-Plus</CardTitle>
                 <CardDescription>
-                  Paket paling ideal untuk bisnis anda dengan dukungan berbagai
-                  fitur menarik
+                  Ideal untuk profil perusahaan yang ingin memperkenalkan bisnis dan produknya
                 </CardDescription>
               </CardHeader>
               <CardContent></CardContent>
@@ -273,10 +273,10 @@ export default function Home() {
             </Card>
           </div>
           <div className="flex min-w-64 flex-1 basis-64 items-center justify-center rounded">
-            <Card className="flex min-h-[24rem] w-full flex-col justify-between rounded-2xl shadow-none dark:border-custom-secdark dark:bg-neutral-900 sm:max-w-[20rem] md:w-full lg:max-w-full">
+            <Card className="flex min-h-[24rem] w-full max-w-[20rem] flex-col justify-between rounded-2xl shadow-none dark:border-custom-secdark dark:bg-neutral-900 md:w-full lg:max-w-full">
               <CardHeader>
                 <CardTitle className="text-2xl">Entahusiast</CardTitle>
-                <CardDescription>Paket terbaik kami,</CardDescription>
+                <CardDescription>Wujudkan website impianmu dengan dukungan berbagai fitur menarik</CardDescription>
               </CardHeader>
               <CardContent></CardContent>
               <CardFooter className="flex justify-between">
@@ -308,7 +308,7 @@ export default function Home() {
       </div>
 
       {/* Product Grid Section */}
-      <p className="mb-4 text-2xl">Our Collection</p>
+      <p className="mb-6 text-2xl md:mb-8">Our Collection</p>
       <div className="mb-12 grid grid-cols-3 gap-4 sm:grid-cols-5 md:gap-6 lg:grid-cols-6">
         {dummyProducts.map((product) => (
           <Link
@@ -331,11 +331,11 @@ export default function Home() {
       </div>
 
       <div className="mb-12 text-center font-inter">
-        <h1 className="text-2xl lg:text-3xl">Why Choose Us?</h1>
+        <h1 className="mb-6 text-2xl md:mb-8 lg:text-3xl">Why Choose Us?</h1>
       </div>
 
       <div className="mb-12 text-center font-inter">
-        <h1 className="mb-8 text-2xl lg:text-3xl">Testimonials</h1>
+        <h1 className="mb-6 text-2xl md:mb-8 lg:text-3xl">Testimonials</h1>
         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
           <Marquee pauseOnHover className="[--duration:20s]">
             {firstRow.map((review) => (
