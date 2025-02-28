@@ -87,7 +87,7 @@ export function Navigation() {
               className="rounded-full md:w-[60px] md:h-[60px]"
             />
             <span className="text-lg md:text-2xl font-medium">
-              Riku Store: At Your Service!
+              Riku Store
             </span>
           </div>
         </Link>
