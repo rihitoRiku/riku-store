@@ -199,7 +199,7 @@ export default function Home() {
         <div className="flex flex-col gap-8 rounded-3xl p-0 md:bg-custom-cream md:p-8 md:dark:bg-neutral-900 lg:flex-row">
           <div className="order-2 grid max-h-[32rem] min-h-[26rem] w-full grid-cols-2 md:order-1 md:aspect-[4/3] md:gap-4">
             <div className="row-span-2 border-r bg-white p-4 dark:border-green-200 dark:bg-[#121212] md:rounded-2xl md:bg-white md:p-6 md:dark:border-none md:dark:bg-neutral-800">
-              <h3 className="mb-2 md:mb-6 text-3xl font-medium md:text-4xl">
+              <h3 className="mb-2 text-3xl font-medium md:mb-6 md:text-4xl">
                 Full Coding with Latest Tech
               </h3>
               <p className="text-sm">
@@ -208,7 +208,7 @@ export default function Home() {
               </p>
             </div>
             <div className="border-b bg-white p-4 dark:border-green-200 dark:bg-[#121212] md:rounded-2xl md:bg-white md:p-6 md:dark:border-none md:dark:bg-neutral-800">
-              <h3 className="mb-2 md:mb-6 text-lg font-medium md:text-2xl">
+              <h3 className="mb-2 text-lg font-medium md:mb-6 md:text-2xl">
                 Modern Trendy Design
               </h3>
               <p className="text-sm">
@@ -217,7 +217,9 @@ export default function Home() {
               </p>
             </div>
             <div className="bg-white p-4 dark:bg-[#121212] md:rounded-2xl md:bg-white md:p-6 md:dark:bg-neutral-800">
-              <h3 className="mb-2 md:mb-6 text-lg font-medium md:text-2xl">Special Price!</h3>
+              <h3 className="mb-2 text-lg font-medium md:mb-6 md:text-2xl">
+                Special Price!
+              </h3>
               <p className="text-sm">
                 Get a special discount by bringing your website project to us
                 during our early launch!
@@ -245,7 +247,7 @@ export default function Home() {
               <CardHeader>
                 <CardTitle className="text-2xl">Basic Growth</CardTitle>
                 <CardDescription>
-                  Cocok untuk website personal dengan konten yang tidak terlalu banyak
+                  Suitable for a personal website with limited content.
                 </CardDescription>
               </CardHeader>
               <CardContent></CardContent>
@@ -261,7 +263,8 @@ export default function Home() {
               <CardHeader>
                 <CardTitle className="text-2xl">Premium-Plus</CardTitle>
                 <CardDescription>
-                  Ideal untuk profil perusahaan yang ingin memperkenalkan bisnis dan produknya
+                  Ideal for a company profile looking to introduce its business
+                  and products.
                 </CardDescription>
               </CardHeader>
               <CardContent></CardContent>
@@ -276,7 +279,10 @@ export default function Home() {
             <Card className="flex min-h-[24rem] w-full max-w-[20rem] flex-col justify-between rounded-2xl shadow-none dark:border-custom-secdark dark:bg-neutral-900 md:w-full lg:max-w-full">
               <CardHeader>
                 <CardTitle className="text-2xl">Entahusiast</CardTitle>
-                <CardDescription>Wujudkan website impianmu dengan dukungan berbagai fitur menarik</CardDescription>
+                <CardDescription>
+                  Bring your dream website to life with the support of various
+                  exciting features.
+                </CardDescription>
               </CardHeader>
               <CardContent></CardContent>
               <CardFooter className="flex justify-between">
