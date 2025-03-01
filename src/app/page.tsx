@@ -22,6 +22,9 @@ import { Marquee } from "@/components/magicui/marquee";
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { TextAnimate } from "@/components/magicui/text-animate";
 import { RainbowButton } from "@/components/magicui/rainbow-button";
+import { AnimatedGradientText } from "@/components/magicui/animated-gradient-text";
+import { ChevronRight } from "lucide-react";
+import { BorderBeam } from "@/components/magicui/border-beam";
 
 const dummyProducts = [
   {
@@ -105,6 +108,37 @@ const reviews = [
   },
 ];
 
+const techstacks = [
+  {
+    alt: "React.js",
+    img: "/assets/techstack/1.jpg",
+  },
+  {
+    alt: "Next",
+    img: "/assets/techstack/2.jpg",
+  },
+  {
+    alt: "Tailwind CSS",
+    img: "/assets/techstack/3.jpg",
+  },
+  {
+    alt: "Javascript",
+    img: "/assets/techstack/4.jpg",
+  },
+  {
+    alt: "Typescript",
+    img: "/assets/techstack/5.jpg",
+  },
+  {
+    alt: "Shadcn",
+    img: "/assets/techstack/6.jpg",
+  },
+  {
+    alt: "Framer Motion",
+    img: "/assets/techstack/7.jpg",
+  }
+];
+
 const ReviewCard = ({
   img,
   name,
@@ -150,9 +184,29 @@ export default function Home() {
   const firstRow = reviews.slice(0, reviews.length / 2);
   const secondRow = reviews.slice(reviews.length / 2);
   return (
-    <div className="container mx-auto max-w-screen-xl px-4 py-8">
+    <div className="container mx-auto max-w-screen-xl px-2 py-8 sm:px-4">
       {/* Landing Page */}
       <div className="mb-8 min-h-[44rem] pt-28 text-center font-inter text-3xl sm:text-4xl md:text-5xl">
+        <div className="group relative mx-auto mb-6 flex w-[14rem] cursor-pointer items-center justify-center rounded-full px-4 py-1.5 text-xl shadow-[inset_0_-8px_10px_#8fdfff1f] transition-shadow duration-500 ease-out hover:shadow-[inset_0_-5px_10px_#8fdfff3f] md:w-[16rem] md:text-2xl">
+          <span
+            className={cn(
+              "absolute inset-0 block h-full w-full animate-gradient rounded-[inherit] bg-gradient-to-r from-[#ffaa40]/50 via-[#9c40ff]/50 to-[#ffaa40]/50 bg-[length:300%_100%] p-[1px]",
+            )}
+            style={{
+              WebkitMask:
+                "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+              WebkitMaskComposite: "destination-out",
+              mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+              maskComposite: "subtract",
+              WebkitClipPath: "padding-box",
+            }}
+          />
+          🎉 <hr className="mx-2 h-4 w-px shrink-0 bg-neutral-500" />
+          <AnimatedGradientText className="text-sm font-medium">
+            Ask a Question
+          </AnimatedGradientText>
+          <ChevronRight className="ml-1 size-4 stroke-neutral-500 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
+        </div>
         <TextAnimate className="mb-24" animation="slideUp" by="word" once>
           We'll build your small business website with lovely design and
           afforable price
@@ -192,22 +246,22 @@ export default function Home() {
       </div> */}
 
       {/* Description Section */}
-      <div className="mb-24">
+      <div className="mb-12">
         <div className="mb-6 text-center font-inter">
           {/* <h1 className="text-3xl">What do We Offer?</h1> */}
         </div>
-        <div className="flex flex-col gap-8 rounded-3xl p-0 md:bg-custom-cream md:p-8 md:dark:bg-neutral-900 lg:flex-row">
-          <div className="order-2 grid max-h-[32rem] min-h-[26rem] w-full grid-cols-2 md:order-1 md:aspect-[4/3] md:gap-4">
-            <div className="row-span-2 border-r bg-white p-4 dark:border-green-200 dark:bg-[#121212] md:rounded-2xl md:bg-white md:p-6 md:dark:border-none md:dark:bg-neutral-800">
+        <div className="flex flex-col gap-8 rounded-3xl p-0 dark:border-neutral-700 md:border md:p-8 md:dark:bg-neutral-900 lg:flex-row">
+          <div className="order-2 grid max-h-[32rem] min-h-[26rem] w-full grid-cols-2 md:order-1 md:aspect-[4/3]">
+            <div className="row-span-2 border-r bg-white p-4 dark:border-green-200 dark:bg-[#121212] md:bg-white md:p-6 md:dark:border-neutral-700 md:dark:bg-neutral-900">
               <h3 className="mb-2 text-3xl font-medium md:mb-6 md:text-4xl">
-                Full Coding with Latest Tech
+                Full Coding
               </h3>
               <p className="text-sm">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
                 amet nihil nemo voluptatem accusamus fugit!
               </p>
             </div>
-            <div className="border-b bg-white p-4 dark:border-green-200 dark:bg-[#121212] md:rounded-2xl md:bg-white md:p-6 md:dark:border-none md:dark:bg-neutral-800">
+            <div className="border-b bg-white p-4 dark:border-green-200 dark:bg-[#121212] md:bg-white md:p-6 md:dark:border-neutral-700 md:dark:bg-neutral-900">
               <h3 className="mb-2 text-lg font-medium md:mb-6 md:text-2xl">
                 Modern Trendy Design
               </h3>
@@ -216,9 +270,9 @@ export default function Home() {
                 Placeat unde, saepe iste nostrum dolor assumenda!
               </p>
             </div>
-            <div className="bg-white p-4 dark:bg-[#121212] md:rounded-2xl md:bg-white md:p-6 md:dark:bg-neutral-800">
+            <div className="bg-white p-4 dark:bg-[#121212] md:bg-white md:p-6 md:dark:bg-neutral-900">
               <h3 className="mb-2 text-lg font-medium md:mb-6 md:text-2xl">
-                Special Price!
+                Special Offers!
               </h3>
               <p className="text-sm">
                 Get a special discount by bringing your website project to us
@@ -236,14 +290,41 @@ export default function Home() {
         </div>
       </div>
 
+      <div className="mb-20 text-center font-inter">
+        <h1 className="mb-6 text-2xl md:mb-8 lg:text-3xl">
+          Bring Latest Technology
+        </h1>
+        <Marquee reverse pauseOnHover className="[--duration:40s] max-w-screen-lg mx-auto" gap={4}>
+          {techstacks.map((review) => (
+            <div className="border">
+              <img
+                className=""
+                src={review.img}
+                alt={review.alt}
+              />
+            </div>
+          ))}
+        </Marquee>
+      </div>
+
+      <div className="mb-20 text-center font-inter">
+        <h1 className="mb-6 text-2xl md:mb-8 lg:text-3xl">
+          Development Process
+        </h1>
+      </div>
+
       {/* Cards Plans Section */}
       <div className="mb-20 text-center font-inter">
-        <h1 className="mb-8 text-3xl md:mb-12 md:text-4xl">
+        <h1 className="mb-2 text-3xl md:mb-4 md:text-4xl">
           Choose Your Website Plan
         </h1>
+        <p className="mb-8 md:mb-12">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi
+          adipisci expedita eos quia, minus vel?
+        </p>
         <div className="mx-auto mb-12 flex max-w-screen-lg flex-wrap gap-4">
           <div className="flex min-w-64 flex-1 basis-64 items-center justify-center rounded sm:justify-end">
-            <Card className="flex min-h-[24rem] w-full max-w-[20rem] flex-col justify-between rounded-2xl border-green-200 bg-custom-cream shadow-none dark:border-green-200 dark:bg-neutral-900 md:w-full lg:max-w-full">
+            <Card className="relative flex min-h-[24rem] w-full max-w-[20rem] flex-col justify-between overflow-hidden rounded-2xl border-purple-100 shadow-none dark:border-neutral-800 dark:bg-neutral-900 md:w-full lg:max-w-full">
               <CardHeader>
                 <CardTitle className="text-2xl">Basic Growth</CardTitle>
                 <CardDescription>
@@ -252,14 +333,15 @@ export default function Home() {
               </CardHeader>
               <CardContent></CardContent>
               <CardFooter className="flex justify-between">
-                <Button className="h-12 w-full rounded-xl border bg-white text-2xl shadow-none dark:border-none dark:border-custom-secdark">
+                <Button className="h-12 w-full rounded-xl border bg-white text-2xl shadow-none dark:border-none dark:bg-neutral-800">
                   $25
                 </Button>
               </CardFooter>
+              <BorderBeam duration={8} size={100} />
             </Card>
           </div>
           <div className="flex min-w-64 flex-1 basis-64 items-center justify-center rounded sm:justify-start">
-            <Card className="flex min-h-[24rem] w-full max-w-[20rem] flex-col justify-between rounded-2xl shadow-none dark:border-custom-secdark dark:bg-neutral-900 md:w-full lg:max-w-full">
+            <Card className="flex min-h-[24rem] w-full max-w-[20rem] flex-col justify-between rounded-2xl shadow-none dark:border-neutral-800 dark:bg-neutral-900 md:w-full lg:max-w-full">
               <CardHeader>
                 <CardTitle className="text-2xl">Premium-Plus</CardTitle>
                 <CardDescription>
@@ -269,14 +351,14 @@ export default function Home() {
               </CardHeader>
               <CardContent></CardContent>
               <CardFooter className="flex justify-between">
-                <Button className="h-12 w-full rounded-xl border text-xl shadow-none dark:border-none dark:border-custom-secdark">
+                <Button className="h-12 w-full rounded-xl border text-xl shadow-none dark:border-none dark:bg-neutral-800">
                   $50
                 </Button>
               </CardFooter>
             </Card>
           </div>
           <div className="flex min-w-64 flex-1 basis-64 items-center justify-center rounded">
-            <Card className="flex min-h-[24rem] w-full max-w-[20rem] flex-col justify-between rounded-2xl shadow-none dark:border-custom-secdark dark:bg-neutral-900 md:w-full lg:max-w-full">
+            <Card className="flex min-h-[24rem] w-full max-w-[20rem] flex-col justify-between rounded-2xl shadow-none dark:border-neutral-800 dark:bg-neutral-900 md:w-full lg:max-w-full">
               <CardHeader>
                 <CardTitle className="text-2xl">Entahusiast</CardTitle>
                 <CardDescription>
@@ -286,7 +368,7 @@ export default function Home() {
               </CardHeader>
               <CardContent></CardContent>
               <CardFooter className="flex justify-between">
-                <Button className="h-12 w-full rounded-xl border text-xl shadow-none dark:border-none dark:border-custom-secdark">
+                <Button className="h-12 w-full rounded-xl border text-xl shadow-none dark:border-none dark:bg-neutral-800">
                   $100
                 </Button>
               </CardFooter>
@@ -298,7 +380,7 @@ export default function Home() {
         <h1 className="mb-8 text-xl md:mb-12 md:text-2xl">
           or instant package plan?
         </h1>
-        <section id="photos">
+        <section className="relative flex" id="photos">
           <div className="columns-2 gap-4 sm:columns-3 md:columns-4">
             {images.map((imageUrl, idx) => (
               <BlurFade key={imageUrl} delay={0.25 + idx * 0.05} inView>
@@ -314,7 +396,7 @@ export default function Home() {
       </div>
 
       {/* Product Grid Section */}
-      <p className="mb-6 text-2xl md:mb-8">Our Collection</p>
+      {/* <p className="mb-6 text-2xl md:mb-8">Our Collection</p>
       <div className="mb-12 grid grid-cols-3 gap-4 sm:grid-cols-5 md:gap-6 lg:grid-cols-6">
         {dummyProducts.map((product) => (
           <Link
@@ -334,14 +416,19 @@ export default function Home() {
             />
           </Link>
         ))}
+      </div> */}
+
+      <div className="mb-20 text-center font-inter">
+        <h1 className="mb-6 text-2xl md:mb-8 lg:text-3xl">
+          Why it's Important To Have Website?
+        </h1>
       </div>
 
-      <div className="mb-12 text-center font-inter">
+      <div className="mb-20 text-center font-inter">
         <h1 className="mb-6 text-2xl md:mb-8 lg:text-3xl">Why Choose Us?</h1>
       </div>
 
-      <div className="mb-12 text-center font-inter">
-        <h1 className="mb-6 text-2xl md:mb-8 lg:text-3xl">Testimonials</h1>
+      <div className="mb-20 text-center font-inter">
         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
           <Marquee pauseOnHover className="[--duration:20s]">
             {firstRow.map((review) => (
@@ -356,6 +443,10 @@ export default function Home() {
           <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r"></div>
           <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l"></div>
         </div>
+      </div>
+
+      <div className="mb-20 text-center font-inter">
+        <h1 className="mb-6 text-2xl md:mb-8 lg:text-3xl">Contact Us</h1>
       </div>
     </div>
   );
