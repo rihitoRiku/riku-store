@@ -25,6 +25,7 @@ import { RainbowButton } from "@/components/magicui/rainbow-button";
 import { AnimatedGradientText } from "@/components/magicui/animated-gradient-text";
 import { ChevronRight } from "lucide-react";
 import { BorderBeam } from "@/components/magicui/border-beam";
+import Timeline from "@/components/timeline";
 
 const dummyProducts = [
   {
@@ -111,32 +112,36 @@ const reviews = [
 const techstacks = [
   {
     alt: "React.js",
-    img: "/assets/techstack/1.jpg",
+    img: "/assets/techstack/1.png",
   },
   {
     alt: "Next",
-    img: "/assets/techstack/2.jpg",
+    img: "/assets/techstack/2.png",
   },
   {
     alt: "Tailwind CSS",
-    img: "/assets/techstack/3.jpg",
+    img: "/assets/techstack/3.png",
   },
   {
-    alt: "Javascript",
-    img: "/assets/techstack/4.jpg",
+    alt: "Node JS",
+    img: "/assets/techstack/4.png",
   },
-  {
-    alt: "Typescript",
-    img: "/assets/techstack/5.jpg",
-  },
+  // {
+  //   alt: "Javascript",
+  //   img: "/assets/techstack/5.png",
+  // },
+  // {
+  //   alt: "Typescript",
+  //   img: "/assets/techstack/6.png",
+  // },
   {
     alt: "Shadcn",
-    img: "/assets/techstack/6.jpg",
+    img: "/assets/techstack/7.png",
   },
   {
     alt: "Framer Motion",
-    img: "/assets/techstack/7.jpg",
-  }
+    img: "/assets/techstack/8.png",
+  },
 ];
 
 const ReviewCard = ({
@@ -252,7 +257,7 @@ export default function Home() {
         </div>
         <div className="flex flex-col gap-8 rounded-3xl p-0 dark:border-neutral-700 md:border md:p-8 md:dark:bg-neutral-900 lg:flex-row">
           <div className="order-2 grid max-h-[32rem] min-h-[26rem] w-full grid-cols-2 md:order-1 md:aspect-[4/3]">
-            <div className="row-span-2 border-r bg-white p-4 dark:border-green-200 dark:bg-[#121212] md:bg-white md:p-6 md:dark:border-neutral-700 md:dark:bg-neutral-900">
+            <div className="row-span-2 flex flex-col justify-center border-r bg-white p-4 dark:border-green-200 dark:bg-[#121212] md:bg-white md:p-6 md:dark:border-neutral-700 md:dark:bg-neutral-900">
               <h3 className="mb-2 text-3xl font-medium md:mb-6 md:text-4xl">
                 Full Coding
               </h3>
@@ -280,7 +285,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="order-1 w-full text-center text-lg md:order-2 lg:max-w-[32rem]">
+          <div className="order-1 flex w-full flex-col justify-center text-center text-lg md:order-2 lg:max-w-[32rem]">
             <p>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut non
               quaerat ut, aliquid perspiciatis fugiat velit vel tempore nulla
@@ -290,27 +295,49 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mb-20 text-center font-inter">
-        <h1 className="mb-6 text-2xl md:mb-8 lg:text-3xl">
-          Bring Latest Technology
+      <div className="mb-16 text-center font-inter">
+        <h1 className="mb-2 text-2xl md:mb-4 lg:text-3xl">
+          Bring The Latest Technology
         </h1>
-        <Marquee reverse pauseOnHover className="[--duration:40s] max-w-screen-lg mx-auto" gap={4}>
+        <p className="mb-8 md:mb-8">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi
+          adipisci expedita eos quia, minus vel?
+        </p>
+        <Marquee
+          reverse
+          pauseOnHover
+          className="mx-auto max-w-screen-lg [--duration:40s]"
+          gap={4}
+        >
           {techstacks.map((review) => (
-            <div className="border">
-              <img
-                className=""
+            <div
+              key={review.alt}
+              className="relative flex h-16 w-24 items-center justify-center md:h-24 md:w-48"
+            >
+              <Image
+                className="object-contain"
                 src={review.img}
                 alt={review.alt}
+                // width={50}
+                // height={50}
+                fill
               />
             </div>
           ))}
         </Marquee>
       </div>
 
-      <div className="mb-20 text-center font-inter">
-        <h1 className="mb-6 text-2xl md:mb-8 lg:text-3xl">
-          Development Process
-        </h1>
+      <div className="mb-20 border-b border-t dark:border-neutral-800 py-16 text-center font-inter md:flex space-y-6 md:gap-6">
+        <div className="flex-1 flex flex-col items-center justify-center mb-8 md:mb-0">
+          <h4 className="mb-4 text-2xl">Development Process</h4>
+          <p className="max-w-[28rem] text-center">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
+            assumenda error iste.
+          </p>
+        </div>
+        <div className="flex-1">
+          <Timeline />
+        </div>
       </div>
 
       {/* Cards Plans Section */}
