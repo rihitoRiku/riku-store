@@ -23,9 +23,10 @@ import { BlurFade } from "@/components/magicui/blur-fade";
 import { TextAnimate } from "@/components/magicui/text-animate";
 import { RainbowButton } from "@/components/magicui/rainbow-button";
 import { AnimatedGradientText } from "@/components/magicui/animated-gradient-text";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, X } from "lucide-react";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import Timeline from "@/components/timeline";
+import { Check } from "lucide-react";
 
 const dummyProducts = [
   {
@@ -126,14 +127,6 @@ const techstacks = [
     alt: "Node JS",
     img: "/assets/techstack/4.png",
   },
-  // {
-  //   alt: "Javascript",
-  //   img: "/assets/techstack/5.png",
-  // },
-  // {
-  //   alt: "Typescript",
-  //   img: "/assets/techstack/6.png",
-  // },
   {
     alt: "Shadcn",
     img: "/assets/techstack/7.png",
@@ -192,7 +185,7 @@ export default function Home() {
     <div className="container mx-auto max-w-screen-xl px-2 py-8 sm:px-4">
       {/* Landing Page */}
       <div className="mb-8 min-h-[44rem] pt-28 text-center font-inter text-3xl sm:text-4xl md:text-5xl">
-        <div className="group relative mx-auto mb-6 flex w-[14rem] cursor-pointer items-center justify-center rounded-full px-4 py-1.5 text-xl shadow-[inset_0_-8px_10px_#8fdfff1f] transition-shadow duration-500 ease-out hover:shadow-[inset_0_-5px_10px_#8fdfff3f] md:w-[16rem] md:text-2xl">
+        <div className="group relative mx-auto mb-6 flex w-[14rem] cursor-pointer items-center justify-center rounded-full px-4 py-1.5 text-xl shadow-[inset_0_-8px_10px_#8fdfff1f] transition-shadow duration-500 ease-out hover:shadow-[inset_0_-5px_10px_#8fdfff3f] md:w-[16rem] md:text-lg">
           <span
             className={cn(
               "absolute inset-0 block h-full w-full animate-gradient rounded-[inherit] bg-gradient-to-r from-[#ffaa40]/50 via-[#9c40ff]/50 to-[#ffaa40]/50 bg-[length:300%_100%] p-[1px]",
@@ -206,9 +199,9 @@ export default function Home() {
               WebkitClipPath: "padding-box",
             }}
           />
-          🎉 <hr className="mx-2 h-4 w-px shrink-0 bg-neutral-500" />
+          ✨ <hr className="mx-2 h-4 w-px shrink-0 bg-neutral-500" />
           <AnimatedGradientText className="text-sm font-medium">
-            Ask a Question
+            In Development!
           </AnimatedGradientText>
           <ChevronRight className="ml-1 size-4 stroke-neutral-500 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
         </div>
@@ -262,8 +255,8 @@ export default function Home() {
                 Full Coding
               </h3>
               <p className="text-sm">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
-                amet nihil nemo voluptatem accusamus fugit!
+                We craft clean, efficient, and fully optimized code to ensure
+                your website runs smoothly and delivers top-notch performance.
               </p>
             </div>
             <div className="border-b bg-white p-4 dark:border-green-200 dark:bg-[#121212] md:bg-white md:p-6 md:dark:border-neutral-700 md:dark:bg-neutral-900">
@@ -271,17 +264,20 @@ export default function Home() {
                 Modern Trendy Design
               </h3>
               <p className="text-sm">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Placeat unde, saepe iste nostrum dolor assumenda!
+                Stay ahead of the curve with sleek, user-friendly, and visually
+                stunning designs that align with the latest web trends.
               </p>
             </div>
             <div className="bg-white p-4 dark:bg-[#121212] md:bg-white md:p-6 md:dark:bg-neutral-900">
               <h3 className="mb-2 text-lg font-medium md:mb-6 md:text-2xl">
-                Special Offers!
+                Pixel Perfect
+                {/* Special Offers! */}
               </h3>
               <p className="text-sm">
-                Get a special discount by bringing your website project to us
-                during our early launch!
+                Ensuring precise & high-quality designs that look flawless on
+                any screen or device.
+                {/* Get a special discount by bringing your website project to us
+                during our early launch! */}
               </p>
             </div>
           </div>
@@ -300,8 +296,9 @@ export default function Home() {
           Bring The Latest Technology
         </h1>
         <p className="mb-8 md:mb-8">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi
-          adipisci expedita eos quia, minus vel?
+          We use industry-leading frameworks like Next.js, React, Tailwind CSS,
+          Node.js, and ShadCN to create fast, scalable, and future-ready
+          websites.
         </p>
         <Marquee
           reverse
@@ -327,9 +324,9 @@ export default function Home() {
         </Marquee>
       </div>
 
-      <div className="mb-20 border-b border-t dark:border-neutral-800 py-16 text-center font-inter md:flex space-y-6 md:gap-6">
-        <div className="flex-1 flex flex-col items-center justify-center mb-8 md:mb-0">
-          <h4 className="mb-4 text-2xl">Development Process</h4>
+      <div className="mb-20 space-y-6 border-b border-t py-16 text-center font-inter dark:border-neutral-800 md:flex md:gap-6">
+        <div className="mb-8 flex flex-1 flex-col items-center justify-center md:mb-0">
+          <h4 className="mb-4 text-3xl">How's The Process?</h4>
           <p className="max-w-[28rem] text-center">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
             assumenda error iste.
@@ -355,13 +352,24 @@ export default function Home() {
               <CardHeader>
                 <CardTitle className="text-2xl">Basic Growth</CardTitle>
                 <CardDescription>
-                  Suitable for a personal website with limited content.
+                  <p className="mb-3">
+                    Suitable for a personal website with limited content.
+                  </p>
+                  <ul className="mx-auto mt-2 flex max-w-[12rem] flex-col items-start space-y-1 text-sm font-medium">
+                    <li className="flex items-center gap-2">
+                      <Check className="h-4 w-4 text-green-500" /> 1 page
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="h-4 w-4 text-green-500" /> Free hosting
+                      & domain
+                    </li>
+                  </ul>
                 </CardDescription>
               </CardHeader>
               <CardContent></CardContent>
               <CardFooter className="flex justify-between">
                 <Button className="h-12 w-full rounded-xl border bg-white text-2xl shadow-none dark:border-none dark:bg-neutral-800">
-                  $25
+                  $9.99
                 </Button>
               </CardFooter>
               <BorderBeam duration={8} size={100} />
@@ -372,14 +380,31 @@ export default function Home() {
               <CardHeader>
                 <CardTitle className="text-2xl">Premium-Plus</CardTitle>
                 <CardDescription>
-                  Ideal for a company profile looking to introduce its business
-                  and products.
+                  <p className="mb-3">
+                    Ideal for a company profile looking to introduce its
+                    business and products.
+                  </p>
+                  <ul className="mx-auto mt-2 flex max-w-[12rem] flex-col items-start space-y-1 text-sm font-medium">
+                    <li className="flex items-center gap-2">
+                      <Check className="h-4 w-4 text-green-500" /> Up to 5 pages
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="h-4 w-4 text-green-500" /> 1x Revision
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="h-4 w-4 text-green-500" /> SEO
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="h-4 w-4 text-green-500" /> Free hosting
+                      & domain
+                    </li>
+                  </ul>
                 </CardDescription>
               </CardHeader>
               <CardContent></CardContent>
               <CardFooter className="flex justify-between">
                 <Button className="h-12 w-full rounded-xl border text-xl shadow-none dark:border-none dark:bg-neutral-800">
-                  $50
+                  $24.99
                 </Button>
               </CardFooter>
             </Card>
@@ -389,14 +414,31 @@ export default function Home() {
               <CardHeader>
                 <CardTitle className="text-2xl">Entahusiast</CardTitle>
                 <CardDescription>
-                  Bring your dream website to life with the support of various
-                  exciting features.
+                  <p className="mb-3">
+                    Bring your dream website to life with the support of various
+                    exciting features.
+                  </p>
+                  <ul className="mx-auto mt-2 flex max-w-[12rem] flex-col items-start space-y-1 text-sm font-medium">
+                    <li className="flex items-center gap-2">
+                      <Check className="h-4 w-4 text-green-500" /> Unlimited Pages
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="h-4 w-4 text-green-500" /> 2x Revision
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="h-4 w-4 text-green-500" /> SEO
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="h-4 w-4 text-green-500" /> Free hosting
+                      & domain
+                    </li>
+                  </ul>
                 </CardDescription>
               </CardHeader>
               <CardContent></CardContent>
               <CardFooter className="flex justify-between">
                 <Button className="h-12 w-full rounded-xl border text-xl shadow-none dark:border-none dark:bg-neutral-800">
-                  $100
+                  $49.99
                 </Button>
               </CardFooter>
             </Card>

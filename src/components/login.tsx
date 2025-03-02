@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Loader from "./loader";
 import { HiEye, HiEyeSlash } from "react-icons/hi2";
+import { LogIn } from "lucide-react";
 
 const formSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -79,9 +80,10 @@ export function Login() {
       {isLoading && <Loader />}
       <Button
         variant="default"
-        className="rounded-2xl bg-custom-cream dark:bg-green-400 shadow-none md:px-8 md:py-6 md:text-lg text-black"
+        className="rounded-2xl bg-custom-cream text-black shadow-none dark:bg-green-400 md:px-8 md:py-6 md:text-lg"
         onClick={() => setIsLoginOpen(true)}
       >
+        <LogIn size={20} />
         Login
       </Button>
 
