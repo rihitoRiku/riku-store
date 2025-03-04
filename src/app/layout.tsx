@@ -58,7 +58,7 @@ export default function RootLayout({
           storageKey="theme"
         >
           <Navigation />
-          <main className="min-h-[calc(100vh-160px)]">
+          <main className="pt-12 min-h-[calc(100vh-160px)]">
             {children}
           </main>
           <Footer />

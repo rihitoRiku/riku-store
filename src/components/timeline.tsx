@@ -33,7 +33,7 @@ const FixedTimeline = () => {
             className={`relative mx-auto max-w-[24rem] md:max-w-full ${index === items.length - 1 ? "" : "mb-12"}`}
           >
             {/* Box container that covers the line */}
-            <div className="relative z-10 flex items-center justify-center gap-8 rounded-2xl border bg-white p-4 text-center dark:border-neutral-800 dark:bg-neutral-900 md:text-start">
+            <div className="relative z-10 flex items-center justify-center gap-8 rounded-2xl border bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900 text-start">
               <div className="dark:bg-neutral-800 bg-neutral-100 w-24 rounded-full aspect-square flex justify-center items-center">
                 {item.icon && <div className="text-primary">{item.icon}</div>}
               </div>
