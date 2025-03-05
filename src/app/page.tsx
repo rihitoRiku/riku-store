@@ -27,6 +27,7 @@ import { ChevronRight, X } from "lucide-react";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import Timeline from "@/components/timeline";
 import { Check } from "lucide-react";
+import Contact from "@/components/contact";
 
 const dummyProducts = [
   {
@@ -209,7 +210,14 @@ export default function Home() {
           We'll build your small business website with lovely design and
           afforable price
         </TextAnimate>
-        <RainbowButton className="text-sm text-white dark:text-black md:py-6 md:text-lg">
+        <RainbowButton
+          className="text-sm text-white dark:text-black md:py-6 md:text-lg"
+          onClick={() =>
+            document
+              .getElementById("process")
+              ?.scrollIntoView({ behavior: "smooth" })
+          }
+        >
           Lets Get Started
         </RainbowButton>
       </div>
@@ -254,7 +262,7 @@ export default function Home() {
               <h3 className="mb-2 text-3xl font-medium md:mb-6 md:text-4xl">
                 Full Coding
               </h3>
-              <p className="text-sm">
+              <p className="text-sm text-neutral-800 dark:text-neutral-100">
                 We craft clean, efficient, and fully optimized code to ensure
                 your website runs smoothly and delivers top-notch performance.
               </p>
@@ -263,7 +271,7 @@ export default function Home() {
               <h3 className="mb-2 text-lg font-medium md:mb-6 md:text-2xl">
                 Modern Trendy Design
               </h3>
-              <p className="text-sm">
+              <p className="text-sm text-neutral-800 dark:text-neutral-100">
                 Stay ahead of the curve with sleek, user-friendly, and visually
                 stunning designs that align with the latest web trends.
               </p>
@@ -273,7 +281,7 @@ export default function Home() {
                 Pixel Perfect
                 {/* Special Offers! */}
               </h3>
-              <p className="text-sm">
+              <p className="text-sm text-neutral-800 dark:text-neutral-100">
                 Ensuring precise & high-quality designs that look flawless on
                 any screen or device.
                 {/* Get a special discount by bringing your website project to us
@@ -324,10 +332,13 @@ export default function Home() {
         </Marquee>
       </div>
 
-      <div className="mb-20 space-y-6 border-b border-t py-16 text-center font-inter dark:border-neutral-800 md:flex md:gap-6">
+      <div
+        id="process"
+        className="mb-20 space-y-6 border-b border-t py-16 text-center font-inter dark:border-neutral-800 md:flex md:gap-6"
+      >
         <div className="mb-8 flex flex-1 flex-col items-center justify-center md:mb-0">
           <h4 className="mb-4 text-3xl">How's The Process?</h4>
-          <p className="max-w-[28rem] text-center">
+          <p className="max-w-[28rem] text-center text-neutral-800 dark:text-neutral-100">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
             assumenda error iste.
           </p>
@@ -338,7 +349,7 @@ export default function Home() {
       </div>
 
       {/* Cards Plans Section */}
-      <div className="mb-20 text-center font-inter">
+      <div id="pricing" className="mb-20 text-center font-inter">
         <h1 className="mb-2 text-3xl md:mb-4 md:text-4xl">
           Choose Your Website Plan
         </h1>
@@ -420,7 +431,8 @@ export default function Home() {
                   </p>
                   <ul className="mx-auto mt-2 flex max-w-[12rem] flex-col items-start space-y-1 text-sm font-medium">
                     <li className="flex items-center gap-2">
-                      <Check className="h-4 w-4 text-green-500" /> Unlimited Pages
+                      <Check className="h-4 w-4 text-green-500" /> Unlimited
+                      Pages
                     </li>
                     <li className="flex items-center gap-2">
                       <Check className="h-4 w-4 text-green-500" /> 2x Revision
@@ -487,11 +499,11 @@ export default function Home() {
         ))}
       </div> */}
 
-      <div className="mb-20 text-center font-inter">
+      {/* <div className="mb-20 text-center font-inter">
         <h1 className="mb-6 text-2xl md:mb-8 lg:text-3xl">
           Why it's Important To Have Website?
         </h1>
-      </div>
+      </div> */}
 
       <div className="mb-20 text-center font-inter">
         <h1 className="mb-6 text-2xl md:mb-8 lg:text-3xl">Why Choose Us?</h1>
@@ -514,9 +526,13 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mb-20 text-center font-inter">
-        <h1 className="mb-6 text-2xl md:mb-8 lg:text-3xl">Contact Us</h1>
+      <div className="text-center font-inter md:flex max-w-screen-lg mx-auto gap-6 px-4">
+        <div className="  border rounded-2xl aspect-[2/1]"></div>
+        <div className=""><Contact /></div>
+        
       </div>
+
+      <div className=""></div>
     </div>
   );
 }

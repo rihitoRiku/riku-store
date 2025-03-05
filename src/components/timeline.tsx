@@ -40,7 +40,7 @@ const FixedTimeline = () => {
 
               <div className="">
                 <h3 className="mb-2 font-medium">{item.title}</h3>
-                <p className="text-sm">{item.desc}</p>
+                <p className="text-sm text-neutral-800 dark:text-neutral-100">{item.desc}</p>
               </div>
             </div>
 
