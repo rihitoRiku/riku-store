@@ -11,7 +11,7 @@ export function Footer() {
           </p>
           
           <a
-            href="https://instagram.com"
+            href="https://instagram.com/rikustore.my.id"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-foreground transition-colors"

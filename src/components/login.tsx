@@ -90,14 +90,14 @@ export function Login() {
       <Dialog open={isLoginOpen} onOpenChange={setIsLoginOpen}>
         <DialogContent className="max-w-[28rem] rounded-lg border-none bg-custom-cream dark:bg-custom-dark">
           <DialogHeader>
-            <DialogTitle className="text-2xl">
+            <DialogTitle className="text-3xl">
               Login to your account
             </DialogTitle>
           </DialogHeader>
 
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 mt-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label className="text-lg" htmlFor="email">Email</Label>
               <Input
                 id="email"
                 placeholder="email@example.com"
@@ -105,14 +105,14 @@ export function Login() {
                 {...form.register("email")}
               />
               {form.formState.errors.email && (
-                <p className="text-sm text-red-500">
+                <p className="text-base text-red-500">
                   {form.formState.errors.email.message}
                 </p>
               )}
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label className="text-lg" htmlFor="password">Password</Label>
               <div className="relative">
                 <Input
                   id="password"
@@ -134,20 +134,20 @@ export function Login() {
                 </button>
               </div>
               {form.formState.errors.password && (
-                <p className="text-sm text-red-500">
+                <p className="text-base text-red-500">
                   {form.formState.errors.password.message}
                 </p>
               )}
             </div>
 
             <div className="space-y-2 pt-4">
-              <Button type="submit" className="w-full">
+              <Button size={"lg"} type="submit" className="w-full bg-neutral-200">
                 Login
               </Button>
 
               <Button
                 type="button"
-                className="w-full"
+                className="w-full bg-neutral-200"
                 onClick={handleOpenRegister}
               >
                 Register
@@ -159,7 +159,7 @@ export function Login() {
                 <span className="w-full border-t" />
               </div>
               <div className="relative flex justify-center text-xs">
-                <span className="text-muted-foreground bg-custom-cream px-4 dark:bg-custom-dark">
+                <span className="text-sm bg-custom-cream px-4 dark:bg-custom-dark">
                   Or continue with
                 </span>
               </div>
@@ -167,7 +167,7 @@ export function Login() {
 
             <Button
               onClick={handleGoogleLogin}
-              className="w-full"
+              className="w-full bg-neutral-200"
               type="button"
             >
               <svg

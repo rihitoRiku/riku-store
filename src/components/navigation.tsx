@@ -75,10 +75,15 @@ export function Navigation() {
   };
   return (
     <>
-    {/* <div className="w-full h-10 bg-yellow-200">Get a special discount by bringing your website project to us
-    during our early launch!</div> */}
-      <div className="bg-background/60 backdrop-blur-md sticky top-0 z-50 w-full border-b dark:border-neutral-800">
-        <div className="container mx-auto flex max-w-screen-xl items-center justify-between px-2 md:px-4 py-4">
+      <div className="flex w-full items-start justify-center gap-1.5 bg-yellow-200 px-4 py-2 text-start font-inter text-sm text-black md:h-10 md:text-center md:text-base">
+        🚀
+        <p>
+          Get a <strong>special discount</strong> by bringing your website
+          project to us during our early launch!
+        </p>
+      </div>
+      <div className="bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur-md dark:border-none">
+        <div className="container mx-auto flex max-w-screen-xl items-center justify-between px-2 py-4 md:px-4">
           <Link href="/">
             <div className="flex items-center gap-4">
               <Image
@@ -86,11 +91,9 @@ export function Navigation() {
                 alt="Logo"
                 width={34}
                 height={34}
-                className="rounded-full md:h-[36px] md:w-[36px] border"
+                className="rounded-full border h-[36px] w-[36px]"
               />
-              <span className="text-lg font-medium md:text-xl">
-                Riku Store
-              </span>
+              <span className="text-lg font-medium md:text-xl">Riku Store</span>
             </div>
           </Link>
 
@@ -128,6 +131,7 @@ export function Navigation() {
               </DropdownMenu>
             ) : (
               <Login />
+              // <></>
             )}
             <ModeToggle />
           </div>

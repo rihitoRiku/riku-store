@@ -65,12 +65,12 @@ export function Register({
           }}
         >
           <DialogHeader>
-            <DialogTitle className="text-2xl">Create new account</DialogTitle>
+            <DialogTitle className="text-3xl">Create new account</DialogTitle>
           </DialogHeader>
 
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="nickname">Nickname</Label>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 mt-4">
+            <div className="">
+              <Label className="text-lg" htmlFor="nickname">Nickname</Label>
               <Input
                 id="nickname"
                 placeholder="Your nickname"
@@ -84,8 +84,8 @@ export function Register({
               )}
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+            <div className="">
+              <Label className="text-lg" htmlFor="email">Email</Label>
               <Input
                 id="email"
                 placeholder="email@example.com"
@@ -99,8 +99,8 @@ export function Register({
               )}
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+            <div className="">
+              <Label className="text-lg" htmlFor="password">Password</Label>
               <div className="relative">
                 <Input
                   id="password"
@@ -129,7 +129,7 @@ export function Register({
             </div>
 
             <div className="space-y-2 pt-4">
-              <Button type="submit" className="w-full">
+              <Button size={"lg"} type="submit" className="w-full bg-neutral-200">
                 Register
               </Button>
             </div>
