@@ -8,95 +8,85 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-  	extend: {
-  		backgroundImage: {},
-  		fontFamily: {
-  			sans: [
-  				'var(--font-rethink-sans)'
-  			],
-  			passionConflict: [
-  				'var(--font-passion-conflict)'
-  			],
-  			inter: [
-  				'var(--font-inter)'
-  			]
-  		},
-  		colors: {
-  			primary: {
-  				DEFAULT: '#'
-  			},
-  			secondary: {
-  				DEFAULT: '#'
-  			},
-  			accent: {
-  				DEFAULT: 'hsl(var(--accent))'
-  			},
-  			custom: {
-  				dark: '#09090B',
-  				secdark: '#3f3f46 ',
-  				light: '#FAFAFA',
-  				gray: '#58626C',
-  				beige: '#DAC8BE',
-  				peach: '#ECC1A1',
-  				cream: '#F5F1EE'
-  			},
-  			keyframes: {
-  				'caret-blink': {
-  					'0%,70%,100%': {
-  						opacity: '1'
-  					},
-  					'20%,50%': {
-  						opacity: '0'
-  					}
-  				}
-  			},
-  			animation: {
-  				'caret-blink': 'caret-blink 1.25s ease-out infinite'
-  			},
-  			'color-1': 'hsl(var(--color-1))',
-  			'color-2': 'hsl(var(--color-2))',
-  			'color-3': 'hsl(var(--color-3))',
-  			'color-4': 'hsl(var(--color-4))',
-  			'color-5': 'hsl(var(--color-5))'
-  		},
-  		keyframes: {
-  			marquee: {
-  				from: {
-  					transform: 'translateX(0)'
-  				},
-  				to: {
-  					transform: 'translateX(calc(-100% - var(--gap)))'
-  				}
-  			},
-  			'marquee-vertical': {
-  				from: {
-  					transform: 'translateY(0)'
-  				},
-  				to: {
-  					transform: 'translateY(calc(-100% - var(--gap)))'
-  				}
-  			},
-  			rainbow: {
-  				'0%': {
-  					'background-position': '0%'
-  				},
-  				'100%': {
-  					'background-position': '200%'
-  				}
-  			},
-  			gradient: {
-  				to: {
-  					backgroundPosition: 'var(--bg-size, 300%) 0'
-  				}
-  			}
-  		},
-  		animation: {
-  			marquee: 'marquee var(--duration) infinite linear',
-  			'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
-  			rainbow: 'rainbow var(--speed, 2s) infinite linear',
-  			gradient: 'gradient 8s linear infinite'
-  		}
-  	}
+    extend: {
+      backgroundImage: {},
+      fontFamily: {
+        'rethink-sans': ['var(--font-rethink-sans)', 'sans-serif'],
+        'passion-conflict': ['var(--font-passion-conflict)', 'sans-serif'],
+        'inter': ['var(--font-inter)', 'sans-serif'],
+      },
+      borderColor: {
+        "dark-neutral": "#262626",
+      },
+      colors: {
+        background: "oklch(var(--background) / <alpha-value>)",
+        foreground: "oklch(var(--foreground) / <alpha-value>)",
+        primary: "oklch(var(--primary) / <alpha-value>)",
+        secondary: "oklch(var(--secondary) / <alpha-value>)",
+        accent: {
+          DEFAULT: "#",
+        },
+        custom: {
+          dark: "#09090B",
+          secdark: "#3f3f46 ",
+          light: "#FAFAFA",
+          gray: "#58626C",
+          beige: "#DAC8BE",
+          peach: "#ECC1A1",
+          cream: "#F5F1EE",
+        },
+        keyframes: {
+          "caret-blink": {
+            "0%,70%,100%": {
+              opacity: "1",
+            },
+            "20%,50%": {
+              opacity: "0",
+            },
+          },
+        },
+        animation: {
+          "caret-blink": "caret-blink 1.25s ease-out infinite",
+        },
+      },
+      keyframes: {
+        marquee: {
+          from: {
+            transform: "translateX(0)",
+          },
+          to: {
+            transform: "translateX(calc(-100% - var(--gap)))",
+          },
+        },
+        "marquee-vertical": {
+          from: {
+            transform: "translateY(0)",
+          },
+          to: {
+            transform: "translateY(calc(-100% - var(--gap)))",
+          },
+        },
+        rainbow: {
+          "0%": {
+            "background-position": "0%",
+          },
+          "100%": {
+            "background-position": "200%",
+          },
+        },
+        gradient: {
+          to: {
+            backgroundPosition: "var(--bg-size, 300%) 0",
+          },
+        },
+      },
+      animation: {
+        marquee: "marquee var(--duration) infinite linear",
+        "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
+        rainbow: "rainbow var(--speed, 2s) infinite linear",
+        gradient: "gradient 8s linear infinite",
+      },
+    },
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;

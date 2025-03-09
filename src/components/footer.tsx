@@ -3,18 +3,17 @@ import * as React from "react";
 
 export function Footer() {
   return (
-    <footer className="py-8">
-      <div className="container max-w-screen-xl mx-auto px-4 border-t py-8">
+    <footer className="py-8 border-t dark:border-dark-neutral">
+      <div className="container max-w-screen-xl mx-auto px-4 dark:text-neutral-200">
         <div className="flex flex-col items-center gap-4">
-          <p className="text-center text-muted-foreground max-w-[24rem]">
+          <p className="text-center  max-w-[24rem]">
             Thank you for your trust using our store. Don't forget to follow for more offers:
           </p>
-          
           <a
             href="https://instagram.com/rikustore.my.id"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground transition-colors"
+            className=" transition-colors"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

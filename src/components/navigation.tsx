@@ -8,6 +8,17 @@ import { supabase } from "./../lib/supabaseClient";
 import { Login } from "./login";
 import { Button } from "@/components/ui/button";
 import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu";
+import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
+import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -91,11 +102,37 @@ export function Navigation() {
                 alt="Logo"
                 width={34}
                 height={34}
-                className="rounded-full border h-[36px] w-[36px]"
+                className="h-[36px] w-[36px] rounded-full border"
               />
-              <span className="text-lg font-medium md:text-xl">Riku Store</span>
+              <span className="text-lg font-medium md:text-xl">RikuStore</span>
             </div>
           </Link>
+
+          <NavigationMenu className="hidden md:flex">
+            <NavigationMenuList className="space-x-8">
+              <NavigationMenuItem>
+                <Link href="/templates" legacyBehavior passHref>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    Browse Templates
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link href="http://localhost:3000/#pricing" legacyBehavior passHref>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    Pricing
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link href="#contact" legacyBehavior passHref>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    Contact
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
 
           <div className="flex items-center gap-2 md:gap-3">
             {isLoggedIn ? (
