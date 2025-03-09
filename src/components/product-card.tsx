@@ -36,7 +36,7 @@ export function ProductCard({
       </div>
 
       <div className="space-y-1 px-2 pb-2 pt-1 xl:px-4 xl:pb-4 xl:pt-2">
-        <h3 className="font-medium text-sm md:text-base">{title}</h3>
+        <h3 className="text-sm font-medium md:text-base">{title}</h3>
         <p className="text-base md:text-lg">${price}</p>
         {/* Uncomment or add additional info as needed:
         <p className="text-sm text-muted-foreground line-clamp-1">{description}</p>
