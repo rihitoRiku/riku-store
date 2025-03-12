@@ -8,7 +8,7 @@ import ContactSection from "@/components/sections/contact-section";
 
 export default function Home() {
   return (
-    <div className="container mx-auto max-w-screen-xl px-2 py-8 pt-12 sm:px-4">
+    <div>
       <HeroSection />
       <DescriptionSection />
       <TechStackSection />

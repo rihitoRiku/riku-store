@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 export default function HeroSection() {
   return (
-    <div className="mb-8 min-h-[44rem] pt-28 text-center text-3xl sm:text-4xl md:text-5xl">
+    <div className="mb-8 min-h-[44rem] pt-40 text-center text-3xl sm:text-4xl md:text-5xl mx-auto max-w-screen-xl px-2 py-8 sm:px-4">
       <div className="group relative mx-auto mb-6 flex w-[14rem] cursor-pointer items-center justify-center rounded-full px-4 py-1.5 text-xl shadow-[inset_0_-8px_10px_#8fdfff1f] transition-shadow duration-500 hover:shadow-[inset_0_-5px_10px_#8fdfff3f] md:w-[16rem] md:text-lg">
         <span
           className={cn(

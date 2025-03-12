@@ -2,7 +2,7 @@ import React from "react";
 
 export default function DescriptionSection() {
   return (
-    <div className="mb-12">
+    <div className="mb-12 mx-auto max-w-screen-xl px-2 py-8 sm:px-4">
       <div className="flex flex-col gap-8 rounded-3xl p-0 dark:border-dark-neutral md:border md:p-8 md:dark:bg-neutral-900 lg:flex-row">
         <div className="order-2 grid max-h-[32rem] min-h-[26rem] w-full grid-cols-2 md:order-1 md:aspect-[4/3]">
           <div className="row-span-2 flex flex-col justify-center border-r bg-white p-4 dark:border-green-200 dark:bg-[#121212] md:bg-white md:p-6 md:dark:border-dark-neutral md:dark:bg-neutral-900">

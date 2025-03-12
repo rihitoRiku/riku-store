@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Marquee } from "@/components/magicui/marquee";
+import { BlurFade } from "@/components/magicui/blur-fade";
 
 const techstacks = [
   { alt: "React.js", img: "/assets/techstack/1.png" },
@@ -12,7 +13,10 @@ const techstacks = [
 
 export default function TechStackSection() {
   return (
-    <div className="mb-16 text-center">
+    <BlurFade delay={0.25} inView>
+        
+      
+    <div className="mb-16 text-center mx-auto max-w-screen-xl px-2 py-8 sm:px-4">
       <h1 className="mb-2 text-2xl md:mb-4 lg:text-3xl">
         Bring The Latest Technology
       </h1>
@@ -41,5 +45,6 @@ export default function TechStackSection() {
         ))}
       </Marquee>
     </div>
+    </BlurFade>
   );
 }
