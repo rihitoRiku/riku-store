@@ -30,9 +30,20 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { ModeToggle } from "@/components/darkmode-toggle";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { HiShoppingCart } from "react-icons/hi2";
+import { Menu } from "lucide-react";
 
 export function Navigation() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login state
@@ -93,39 +104,54 @@ export function Navigation() {
           project to us during our early launch!
         </p>
       </div>
-      <div className="bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur-md dark:border-none">
+      <div className="sticky top-0 z-50 w-full border-b border-neutral-100/30 bg-background/60 backdrop-blur-md dark:border-none">
         <div className="container mx-auto flex max-w-screen-xl items-center justify-between px-2 py-4 md:px-4">
           <Link href="/">
             <div className="flex items-center gap-4">
-              <Image
+              {/* <Image
                 src="/logo.svg"
                 alt="Logo"
                 width={34}
                 height={34}
                 className="h-[36px] w-[36px] rounded-full border"
-              />
-              <span className="text-lg font-medium md:text-xl">RikuStore</span>
+              /> */}
+              <span className="font-passion-conflict text-lg font-medium md:text-xl">
+                RikuStore
+              </span>
             </div>
           </Link>
 
+          {/* Desktop Navigation - Hidden on mobile */}
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList className="space-x-8">
               <NavigationMenuItem>
-                <Link href="/templates" legacyBehavior passHref>
+                <Link
+                  href="https://rikustore.vercel.app/templates"
+                  legacyBehavior
+                  passHref
+                >
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Browse Templates
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="http://localhost:3000/#pricing" legacyBehavior passHref>
+                <Link
+                  href="https://rikustore.vercel.app/#pricing"
+                  legacyBehavior
+                  passHref
+                >
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Pricing
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="#contact" legacyBehavior passHref>
+                <Link
+                  href="https://rikustore.vercel.app/#contact"
+                  legacyBehavior
+                  passHref
+                >
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Contact
                   </NavigationMenuLink>
@@ -171,6 +197,50 @@ export function Navigation() {
               // <></>
             )}
             <ModeToggle />
+            {/* Mobile Navigation - Hidden on desktop */}
+            <Sheet>
+              <SheetTrigger asChild className="md:hidden">
+                <Button
+                  variant="default"
+                  size="icon"
+                  className="rounded-xl bg-custom-light shadow-none md:p-4 md:text-lg"
+                >
+                  <Menu className="h-[1.2rem] w-[1.2rem]" />
+                </Button>
+                {/* <Button variant="ghost" size="icon">
+                  <Menu />
+                  <span className="sr-only">Toggle menu</span>
+                </Button> */}
+              </SheetTrigger>
+              <SheetContent side="right" className="bg-neutral-950 border-none">
+                <SheetHeader>
+                  <SheetTitle className="text-2xl text-start">Menu</SheetTitle>
+                  <SheetDescription>
+                   
+                  </SheetDescription>
+                </SheetHeader>
+                <nav className="mt-8 flex flex-col gap-4">
+                  <Link
+                    href="https://rikustore.vercel.app/templates"
+                    className="text-lg font-medium hover:underline"
+                  >
+                    Browse Templates
+                  </Link>
+                  <Link
+                    href="https://rikustore.vercel.app/#pricing"
+                    className="text-lg font-medium hover:underline"
+                  >
+                    Pricing
+                  </Link>
+                  <Link
+                    href="https://rikustore.vercel.app/#contact"
+                    className="text-lg font-medium hover:underline"
+                  >
+                    Contact
+                  </Link>
+                </nav>
+              </SheetContent>
+            </Sheet>
           </div>
 
           <Dialog open={isLogoutOpen} onOpenChange={setIsLogoutOpen}>

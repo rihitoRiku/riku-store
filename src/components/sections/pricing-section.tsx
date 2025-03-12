@@ -46,39 +46,47 @@ const images = Array.from(
 
 export default function PricingSection() {
   return (
-    <div className="mb-20 text-center">
-      <h2 className="mb-2 text-3xl md:mb-4 md:text-4xl">
-        Choose Your Website Plan
-      </h2>
-      <p className="mb-8 md:mb-12">Affordable plans tailored to your needs.</p>
+    <div className="mx-auto mb-20 max-w-screen-xl px-2 py-8 text-center sm:px-4">
+      <BlurFade delay={0.25} inView>
+        <h2 className="mb-2 text-3xl md:mb-4 md:text-4xl">
+          Choose Your Website Plan
+        </h2>
+      </BlurFade>
+      <BlurFade delay={0.25} inView>
+        <p className="mb-8 md:mb-12">
+          Affordable plans tailored to your needs.
+        </p>
+      </BlurFade>
       <div className="mx-auto mb-12 flex max-w-screen-lg flex-wrap gap-4">
         {plans.map((plan, idx) => (
           <div
             key={plan.title}
             className="flex min-w-64 flex-1 basis-64 items-center justify-center"
           >
-            <Card className="relative min-h-[24rem] w-full max-w-[20rem] flex flex-col justify-between rounded-2xl shadow-none dark:border-dark-neutral dark:bg-neutral-900">
-              <CardHeader>
-                <CardTitle className="text-2xl">{plan.title}</CardTitle>
-                <CardDescription>
-                  <p className="mb-3">{plan.description}</p>
-                  <ul className="mx-auto mt-2 flex max-w-[12rem] flex-col items-start space-y-1 text-sm font-medium">
-                    {plan.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-2">
-                        <Check className="h-4 w-4 text-green-500" /> {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </CardDescription>
-              </CardHeader>
-              <CardContent />
-              <CardFooter>
-                <Button className="h-12 w-full rounded-xl text-xl dark:bg-neutral-800">
-                  {plan.price}
-                </Button>
-              </CardFooter>
-              {plan.beam && <BorderBeam duration={8} size={100} />}
-            </Card>
+            <BlurFade delay={0.25 * idx} inView>
+              <Card className="relative flex min-h-[24rem] w-full max-w-[20rem] flex-col justify-between rounded-2xl shadow-none dark:border-dark-neutral dark:bg-neutral-900">
+                <CardHeader>
+                  <CardTitle className="text-2xl">{plan.title}</CardTitle>
+                  <CardDescription>
+                    <p className="mb-3">{plan.description}</p>
+                    <ul className="mx-auto mt-2 flex max-w-[12rem] flex-col items-start space-y-1 text-sm font-medium">
+                      {plan.features.map((feature) => (
+                        <li key={feature} className="flex items-center gap-2">
+                          <Check className="h-4 w-4 text-green-500" /> {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </CardDescription>
+                </CardHeader>
+                <CardContent />
+                <CardFooter>
+                  <Button className="h-12 w-full rounded-xl text-xl dark:bg-neutral-800">
+                    {plan.price}
+                  </Button>
+                </CardFooter>
+                {plan.beam && <BorderBeam duration={8} size={100} />}
+              </Card>
+            </BlurFade>
           </div>
         ))}
       </div>
