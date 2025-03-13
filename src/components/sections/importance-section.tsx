@@ -6,6 +6,7 @@ export default function ImportanceSection() {
       <h1 className="mb-6 text-2xl md:mb-8 lg:text-3xl">
         Why it's Important To Have Website?
       </h1>
+      <div className="min-h-screen"></div>
     </div>
   );
 }

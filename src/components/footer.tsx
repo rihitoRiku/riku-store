@@ -3,7 +3,7 @@ import * as React from "react";
 
 export function Footer() {
   return (
-    <footer className="py-8 border-t dark:border-dark-neutral">
+    <footer className="py-8 border-t dark:border-dark-neutral mt-20">
       <div className="container max-w-screen-xl mx-auto px-4 dark:text-neutral-200">
         <div className="flex flex-col items-center gap-4">
           <p className="text-center  max-w-[24rem]">

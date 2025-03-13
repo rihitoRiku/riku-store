@@ -115,7 +115,7 @@ export function Navigation() {
                 height={34}
                 className="h-[36px] w-[36px] rounded-full border"
               /> */}
-              <span className="font-passion-conflict text-lg font-medium md:text-xl">
+              <span className="font-passion-conflict text-lg font-medium md:text-xl ps-2">
                 RikuStore
               </span>
             </div>
@@ -127,6 +127,7 @@ export function Navigation() {
               <NavigationMenuItem>
                 <Link
                   href="https://rikustore.vercel.app/templates"
+                  // href="http://localhost:3000/templates"
                   legacyBehavior
                   passHref
                 >
@@ -138,6 +139,7 @@ export function Navigation() {
               <NavigationMenuItem>
                 <Link
                   href="https://rikustore.vercel.app/#pricing"
+                  // href="http://localhost:3000/#pricing"
                   legacyBehavior
                   passHref
                 >
@@ -149,6 +151,7 @@ export function Navigation() {
               <NavigationMenuItem>
                 <Link
                   href="https://rikustore.vercel.app/#contact"
+                  // href="http://localhost:3000/#contact"
                   legacyBehavior
                   passHref
                 >
@@ -212,7 +215,7 @@ export function Navigation() {
                   <span className="sr-only">Toggle menu</span>
                 </Button> */}
               </SheetTrigger>
-              <SheetContent side="right" className="bg-neutral-950 border-none">
+              <SheetContent side="right" className="dark:bg-neutral-950 bg-neutral-200 border-none">
                 <SheetHeader>
                   <SheetTitle className="text-2xl text-start">Menu</SheetTitle>
                   <SheetDescription>

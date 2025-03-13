@@ -80,7 +80,7 @@ export default function PricingSection() {
                 </CardHeader>
                 <CardContent />
                 <CardFooter>
-                  <Button className="h-12 w-full rounded-xl text-xl dark:bg-neutral-800">
+                  <Button className="h-12 w-full rounded-xl text-xl dark:bg-neutral-900 border dark:border-dark-neutral">
                     {plan.price}
                   </Button>
                 </CardFooter>
@@ -90,9 +90,10 @@ export default function PricingSection() {
           </div>
         ))}
       </div>
+      <BlurFade delay={0.5} inView>
       <h3 className="mb-8 text-xl md:mb-12 md:text-2xl">
         Or Instant Package Plan?
-      </h3>
+      </h3></BlurFade>
       <section className="relative flex">
         <div className="columns-2 gap-4 sm:columns-3 md:columns-4">
           {images.map((imageUrl, idx) => (

@@ -2,7 +2,6 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { FaArrowLeft } from "react-icons/fa6";
 import Image from "next/image";
 import { showToast } from "@/lib/utils/toast";
 import Autoplay from "embla-carousel-autoplay";
@@ -12,9 +11,10 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { BlurFade } from "@/components/magicui/blur-fade";
-import { Heart } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
+import { BlurFade } from "@/components/magicui/blur-fade";
+import { FaArrowLeft } from "react-icons/fa6";
+import { Heart } from "lucide-react";
 
 const allProducts = [
   {
@@ -301,7 +301,7 @@ export default function page() {
         <div className=""></div>
         <div className="flex w-full flex-col rounded-lg p-4">
           {/* Caraousel Section */}
-          <div className="mb-8 md:mb-16">
+          {/* <div className="mb-8 md:mb-16">
             <Carousel
               plugins={[
                 Autoplay({
@@ -331,7 +331,7 @@ export default function page() {
                 ))}
               </CarouselContent>
             </Carousel>
-          </div>
+          </div> */}
           <section className="mb-16">
             <div className="mx-auto mb-12 max-w-screen-md">
               <h2 className="mb-4 text-center text-2xl font-semibold md:mb-6 md:text-3xl">
@@ -367,9 +367,9 @@ export default function page() {
                   <div
                     key={product.id}
                     ref={isLastElement ? lastProductElementRef : null}
-                    className="w-fulls aspect-[7/6]"
+                    className="w-full cursor-pointer aspect-[7/6]"
                   >
-                    <div className="relative flex h-[90%] items-center justify-center rounded-2xl border text-neutral-400 dark:border-dark-neutral">
+                    <div className="relative flex h-[90%] items-center justify-center overflow-hidden rounded-2xl border text-neutral-400 dark:border-dark-neutral">
                       {!loadedImages[product.id] && (
                         <Skeleton className="absolute inset-0 h-full w-full rounded-2xl" />
                       )}
@@ -377,11 +377,12 @@ export default function page() {
                         src={product.image}
                         alt={product.title}
                         fill
-                        className={`rounded-2xl object-cover ${loadedImages[product.id] ? "opacity-100" : "opacity-0"}`}
+                        className={`transform rounded-2xl object-cover transition-transform duration-300 hover:scale-110 ${loadedImages[product.id] ? "opacity-100" : "opacity-0"}`}
                         onLoad={() => handleImageLoad(product.id)}
                         onError={() => handleImageLoad(product.id)} // Handle errors too
                       />
                     </div>
+
                     <div className="flex justify-between px-4 py-1.5">
                       <p>{product.title}</p>
                       <div className="inline-flex gap-2">

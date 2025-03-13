@@ -1,5 +1,6 @@
 import React from "react";
 import { Marquee } from "@/components/magicui/marquee";
+import { BlurFade } from "@/components/magicui/blur-fade";
 import { cn } from "@/lib/utils";
 
 const reviews = [
@@ -80,24 +81,30 @@ export default function ReviewsSection() {
   const firstRow = reviews.slice(0, reviews.length / 2);
   const secondRow = reviews.slice(reviews.length / 2);
   return (
-    <div>
-      <div className="mb-20 text-center">
-        <h1 className="mb-6 text-2xl md:mb-8 lg:text-3xl">Why Choose Us?</h1>
-      </div>
+    <div className="mx-auto max-w-screen-xl px-2 py-8 sm:px-4">
+      <BlurFade delay={0.25} inView>
+        <div className="mb-12 text-center">
+          <h1 className="text-2xl md:mb-8 lg:text-3xl">What's Our Clients Say</h1>
+        </div>
+      </BlurFade>
       <div className="mb-20 text-center">
         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-          <Marquee pauseOnHover className="[--duration:20s]">
-            {firstRow.map((review) => (
-              <ReviewCard key={review.username} {...review} />
-            ))}
-          </Marquee>
-          <Marquee reverse pauseOnHover className="[--duration:20s]">
-            {secondRow.map((review) => (
-              <ReviewCard key={review.username} {...review} />
-            ))}
-          </Marquee>
-          <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r"></div>
-          <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l"></div>
+          <BlurFade delay={0.25} inView>
+            <Marquee pauseOnHover className="[--duration:20s]">
+              {firstRow.map((review) => (
+                <ReviewCard key={review.username} {...review} />
+              ))}
+            </Marquee>
+          </BlurFade>
+          <BlurFade delay={0.5} inView>
+            <Marquee reverse pauseOnHover className="[--duration:20s]">
+              {secondRow.map((review) => (
+                <ReviewCard key={review.username} {...review} />
+              ))}
+            </Marquee>
+          </BlurFade>
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
         </div>
       </div>
     </div>

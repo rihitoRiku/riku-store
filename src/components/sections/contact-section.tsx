@@ -2,6 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import Image from "next/image";
 import { z } from "zod";
 import { showToast } from "@/lib/utils/toast";
 import { Button } from "@/components/ui/button";
@@ -47,8 +48,15 @@ export default function ContactSection() {
       className="mx-auto max-w-screen-lg px-4 py-6 text-center sm:px-4"
     >
       <BlurFade delay={0.25} inView>
-        <div className="flex flex-col gap-6 md:flex-row md:gap-6">
-          <div className="aspect-[2/1] max-h-[24rem] rounded-2xl border dark:border-neutral-800 md:aspect-auto md:flex-[3]" />
+        <div className="flex flex-col gap-6 md:flex-row">
+          <div className="relative aspect-[2/1] max-h-[24rem] md:aspect-auto md:mt-8 md:flex-[3]">
+            <Image
+              src={"assets/contact.svg"}
+              alt="contac-illustration"
+              className="rounded-2xl bg-green-50 object-contain"
+              fill
+            />
+          </div>
           <div className="md:flex-[2]">
             <h2 className="mb-4 text-start text-2xl md:mb-6 lg:text-3xl">
               Contact Us
