@@ -26,6 +26,12 @@ export default {
         accent: {
           DEFAULT: "#",
         },
+        zinc: {
+          100: '#f4f4f5', // Light mode track
+          200: '#e4e4e7', // Light mode thumb
+          800: '#27272a', // Dark mode thumb
+          950: '#18181b', // Dark mode track
+        },
         custom: {
           dark: "#09090B",
           secdark: "#3f3f46 ",

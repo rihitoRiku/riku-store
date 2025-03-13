@@ -22,28 +22,37 @@
 } */
 
 @layer utilities {
-  /* Standard scrollbar for Firefox */
-  * {
+  /* Firefox */
+  html {
     scrollbar-width: thin;
-    scrollbar-color: theme("colors.zinc.800") theme("colors.zinc.950");
+    scrollbar-color: theme('colors.zinc.200') theme('colors.zinc.100');
+  }
+  html.dark {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.zinc.800') theme('colors.zinc.950');
   }
 
-  /* WebKit Scrollbar (Chrome, Edge, Safari) */
+  /* WebKit */
   *::-webkit-scrollbar {
-    width: 8px; /* Adjust width */
+    width: 8px;
   }
-
-  *::-webkit-scrollbar-track {
-    background: theme("colors.zinc.950"); /* Dark track */
+  *:not(.dark)::-webkit-scrollbar-track {
+    background: theme('colors.zinc.100');
     border-radius: 9999px;
   }
-
-  *::-webkit-scrollbar-thumb {
-    background: theme("colors.zinc.800"); /* Dark thumb */
+  .dark *::-webkit-scrollbar-track {
+    background: theme('colors.zinc.950');
+    border-radius: 9999px;
+  }
+  *:not(.dark)::-webkit-scrollbar-thumb {
+    background: theme('colors.zinc.200');
+    border-radius: 9999px;
+  }
+  .dark *::-webkit-scrollbar-thumb {
+    background: theme('colors.zinc.800');
     border-radius: 9999px;
   }
 }
-
 @layer base {
   :root {
     --background: oklch(1 0 0);
