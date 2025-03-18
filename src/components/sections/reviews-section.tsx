@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react";
 import { Marquee } from "@/components/magicui/marquee";
 import { BlurFade } from "@/components/magicui/blur-fade";

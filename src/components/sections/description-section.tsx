@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react";
 
 export default function DescriptionSection() {
@@ -38,7 +40,7 @@ export default function DescriptionSection() {
             </p>
           </div>
         </div>
-        <div className="order-1 mt-8 flex w-full flex-col justify-center text-center text-5xl lg:order-1 lg:mt-0 lg:max-w-[32rem] dark:text-neutral-400">
+        <div className="order-1 mt-8 flex w-full flex-col justify-center text-center text-4xl md:text-5xl lg:order-1 lg:mt-0 lg:max-w-[32rem]  dark:text-neutral-400">
           <p>Why Choose Us?</p>
         </div>
       </div>

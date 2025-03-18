@@ -351,7 +351,7 @@ export default function page() {
               </h2>
               <p className="text-center text-neutral-800 dark:text-neutral-100">
                 Browse our collection of templates for various needs. Filter by
-                category to find exactly what you're looking for.
+                category to find exactly what you're looking for. <span className="font-light text-yellow-500 dark:text-yellow-200">Notes: At this moment, the templates showed are still in development and for showcase only, please choose our <Link className="text-yellow-400 font-normal" href="http://localhost:3000/#pricing">custom plan</Link> instead^^</span>
               </p>
             </div>
             <div className="mb-12">
@@ -366,7 +366,7 @@ export default function page() {
                     }`}
                     onClick={() => handleFilterClick(category.name)}
                   >
-                    <div className="relative size-8">
+                    <div className="relative size-6 md:size-8">
                       <Image
                         src={category.icon}
                         alt="category icon"
@@ -390,7 +390,8 @@ export default function page() {
                     className="aspect-[7/6] w-full"
                   >
                     <Link
-                      href={`templates/${product.id}`}
+                      // href={`templates/${product.id}`}
+                      href="http://localhost:3000/#pricing"
                       className="relative flex h-[90%] cursor-pointer items-center justify-center overflow-hidden rounded-2xl border text-neutral-400 dark:border-dark-neutral"
                     >
                       {!loadedImages[product.id] && (
