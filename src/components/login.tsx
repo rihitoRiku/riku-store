@@ -80,7 +80,7 @@ export function Login() {
       {isLoading && <Loader />}
       <Button
         variant="default"
-        className="rounded-xl bg-custom-cream text-black shadow-none dark:bg-green-400 md:px-4 md:py-4 text-base"
+        className="rounded-xl bg-custom-cream hover:bg-green-200 dark:hover:bg-green-200 text-black shadow-none dark:bg-green-400 md:px-4 md:py-4 text-base"
         onClick={() => setIsLoginOpen(true)}
       >
         <LogIn size={18} />

@@ -15,165 +15,166 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { FaArrowLeft } from "react-icons/fa6";
 import { Heart } from "lucide-react";
+import { Forward } from "lucide-react";
 
 const allProducts = [
   {
-    id: 1,
+    id: 0,
     title: "Company Profile Template",
     price: 20,
-    likes: 143,
+    sold: 20,
     category: "Company Profile",
     image: "/assets/portfolio/1.png",
   },
   {
-    id: 2,
+    id: 1,
     title: "Professional Resume",
     price: 15,
-    likes: 87,
+    sold: 16,
     category: "Digital Resume",
     image: "/assets/portfolio/2.png",
   },
   {
-    id: 3,
+    id: 2,
     title: "Social Media LinkTree",
     price: 10,
-    likes: 216,
+    sold: 20,
     category: "LinkTree",
     image: "/assets/portfolio/3.png",
   },
   {
-    id: 4,
+    id: 3,
     title: "Corporate Branding Kit",
     price: 35,
-    likes: 94,
+    sold: 20,
     category: "Company Profile",
     image: "/assets/portfolio/4.png",
   },
   {
-    id: 5,
+    id: 4,
     title: "Creative CV Template",
     price: 18,
-    likes: 122,
+    sold: 20,
     category: "Digital Resume",
     image: "/assets/portfolio/5.png",
   },
   {
-    id: 6,
+    id: 5,
     title: "Business Card Design",
     price: 8,
-    likes: 156,
+    sold: 20,
     category: "Company Profile",
     image: "/assets/portfolio/6.png",
   },
   {
-    id: 7,
+    id: 6,
     title: "Developer Portfolio",
     price: 25,
-    likes: 178,
+    sold: 20,
     category: "Digital Resume",
     image: "/assets/portfolio/7.png",
   },
   {
-    id: 8,
+    id: 7,
     title: "Social Media Bundle",
     price: 30,
-    likes: 205,
+    sold: 20,
     category: "LinkTree",
     image: "/assets/portfolio/8.png",
   },
   {
-    id: 9,
+    id: 8,
     title: "Startup Pitch Deck",
     price: 45,
-    likes: 112,
+    sold: 20,
     category: "Company Profile",
     image: "/assets/portfolio/9.png",
   },
   {
-    id: 10,
+    id: 9,
     title: "Academic CV",
     price: 12,
-    likes: 89,
+    sold: 20,
     category: "Digital Resume",
     image: "/assets/portfolio/10.png",
   },
   {
-    id: 11,
+    id: 10,
     title: "Instagram Link Page",
     price: 7,
-    likes: 243,
+    sold: 20,
     category: "LinkTree",
     image: "/assets/portfolio/11.png",
   },
   {
-    id: 12,
+    id: 11,
     title: "Annual Report Template",
     price: 40,
-    likes: 78,
+    sold: 20,
     category: "Company Profile",
     image: "/assets/portfolio/12.png",
   },
   {
-    id: 13,
+    id: 12,
     title: "Creative Portfolio",
     price: 22,
-    likes: 167,
+    sold: 20,
     category: "Digital Resume",
     image: "/assets/portfolio/13.png",
   },
   {
-    id: 14,
+    id: 13,
     title: "YouTube Channel Links",
     price: 9,
-    likes: 198,
+    sold: 20,
     category: "LinkTree",
     image: "/assets/portfolio/14.png",
   },
   {
-    id: 15,
+    id: 14,
     title: "Corporate Identity Package",
     price: 55,
-    likes: 105,
+    sold: 20,
     category: "Company Profile",
     image: "/assets/portfolio/15.png",
   },
   {
-    id: 16,
+    id: 15,
     title: "Job Application Bundle",
     price: 19,
-    likes: 142,
+    sold: 20,
     category: "Digital Resume",
     image: "/assets/portfolio/16.png",
   },
   {
-    id: 17,
+    id: 16,
     title: "Artist LinkTree",
     price: 11,
-    likes: 227,
+    sold: 20,
     category: "LinkTree",
     image: "/assets/portfolio/17.png",
   },
   {
-    id: 18,
+    id: 17,
     title: "Small Business Package",
     price: 29,
-    likes: 118,
+    sold: 20,
     category: "Company Profile",
     image: "/assets/portfolio/18.png",
   },
   {
-    id: 19,
+    id: 18,
     title: "Visual Resume",
     price: 16,
-    likes: 154,
+    sold: 20,
     category: "Digital Resume",
     image: "/assets/portfolio/19.png",
   },
   {
-    id: 20,
+    id: 19,
     title: "Podcast Links Page",
     price: 10,
-    likes: 183,
+    sold: 20,
     category: "LinkTree",
     image: "/assets/portfolio/20.png",
   },
@@ -185,10 +186,22 @@ export default function page() {
 
   // Filter options
   const categories = [
-    "All Type",
-    "Company Profile",
-    "Digital Resume",
-    "LinkTree",
+    {
+      name: "All Type",
+      icon: "/assets/icons/all.png",
+    },
+    {
+      name: "Company Profile",
+      icon: "/assets/icons/company.png",
+    },
+    {
+      name: "Digital Resume",
+      icon: "/assets/icons/cv.png",
+    },
+    {
+      name: "LinkTree",
+      icon: "/assets/icons/tree.png",
+    },
   ];
   const [activeFilter, setActiveFilter] = useState("All Type");
 
@@ -298,7 +311,6 @@ export default function page() {
           <FaArrowLeft />
           <span>Back</span>
         </Link>
-        <div className=""></div>
         <div className="flex w-full flex-col rounded-lg p-4">
           {/* Caraousel Section */}
           {/* <div className="mb-8 md:mb-16">
@@ -346,15 +358,23 @@ export default function page() {
               <ul className="mx-auto flex flex-wrap items-center justify-center gap-4 text-sm text-neutral-800 dark:text-neutral-100 md:gap-6 md:text-base">
                 {categories.map((category) => (
                   <button
-                    key={category}
-                    className={`rounded-full px-4 py-2 ${
-                      activeFilter === category
+                    key={category.name}
+                    className={`flex items-center justify-center gap-3 rounded-full px-4 py-2 transition-all duration-300 ease-in-out ${
+                      activeFilter === category.name
                         ? "bg-custom-beige text-white dark:bg-green-400 dark:text-black"
                         : "bg-neutral-100 dark:bg-neutral-800"
                     }`}
-                    onClick={() => handleFilterClick(category)}
+                    onClick={() => handleFilterClick(category.name)}
                   >
-                    {category}
+                    <div className="relative size-8">
+                      <Image
+                        src={category.icon}
+                        alt="category icon"
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                    {category.name}
                   </button>
                 ))}
               </ul>
@@ -367,9 +387,12 @@ export default function page() {
                   <div
                     key={product.id}
                     ref={isLastElement ? lastProductElementRef : null}
-                    className="w-full cursor-pointer aspect-[7/6]"
+                    className="aspect-[7/6] w-full"
                   >
-                    <div className="relative flex h-[90%] items-center justify-center overflow-hidden rounded-2xl border text-neutral-400 dark:border-dark-neutral">
+                    <Link
+                      href={`templates/${product.id}`}
+                      className="relative flex h-[90%] cursor-pointer items-center justify-center overflow-hidden rounded-2xl border text-neutral-400 dark:border-dark-neutral"
+                    >
                       {!loadedImages[product.id] && (
                         <Skeleton className="absolute inset-0 h-full w-full rounded-2xl" />
                       )}
@@ -381,15 +404,14 @@ export default function page() {
                         onLoad={() => handleImageLoad(product.id)}
                         onError={() => handleImageLoad(product.id)} // Handle errors too
                       />
-                    </div>
+                    </Link>
 
                     <div className="flex justify-between px-4 py-1.5">
                       <p>{product.title}</p>
                       <div className="inline-flex gap-2">
                         <p>${product.price}</p>
                         <div className="flex items-center justify-center gap-1">
-                          <Heart className="size-5" />
-                          <p>{product.likes}</p>
+                          <Forward className="size-5" />
                         </div>
                       </div>
                     </div>

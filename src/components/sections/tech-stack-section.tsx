@@ -26,7 +26,7 @@ export default function TechStackSection() {
         <h1 className="mb-2 text-2xl md:mb-4 lg:text-3xl">
           Bring The Latest Technology
         </h1>
-        <p className="mb-8 md:mb-8">
+        <p className="mb-8 md:mb-8 dark:text-neutral-100">
           We use industry-leading frameworks like Next.js, React, Tailwind CSS,
           Node.js, and ShadCN to create fast, scalable, and future-ready
           websites.

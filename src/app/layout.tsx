@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 // Theme & Fonts
 import { Rethink_Sans, Passions_Conflict, Inter } from "next/font/google";
 import "./globals.css";
@@ -30,16 +30,7 @@ export const metadata: Metadata = {
     template: "%s | Riku Store",
   },
   description: "Minimalist e-commerce store",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1, // Prevent zooming on mobile
-  },
   robots: "index, follow",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#121212" },
-  ],
   openGraph: {
     title: "Riku Store",
     description: "Minimalist e-commerce store",
@@ -47,6 +38,13 @@ export const metadata: Metadata = {
     type: "website",
     images: ["/og-image.jpg"], // Default OG image
   },
+};
+
+// Move viewport to a separate export
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1, // Prevent zooming on mobile
 };
 
 export default function RootLayout({

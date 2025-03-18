@@ -126,8 +126,8 @@ export function Navigation() {
             <NavigationMenuList className="space-x-8">
               <NavigationMenuItem>
                 <Link
-                  href="https://rikustore.vercel.app/templates"
-                  // href="http://localhost:3000/templates"
+                  // href="https://rikustore.vercel.app/templates"
+                  href="http://localhost:3000/templates"
                   legacyBehavior
                   passHref
                 >
@@ -138,8 +138,8 @@ export function Navigation() {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link
-                  href="https://rikustore.vercel.app/#pricing"
-                  // href="http://localhost:3000/#pricing"
+                  // href="https://rikustore.vercel.app/#pricing"
+                  href="http://localhost:3000/#pricing"
                   legacyBehavior
                   passHref
                 >
@@ -150,8 +150,8 @@ export function Navigation() {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link
-                  href="https://rikustore.vercel.app/#contact"
-                  // href="http://localhost:3000/#contact"
+                  // href="https://rikustore.vercel.app/#contact"
+                  href="http://localhost:3000/#contact"
                   legacyBehavior
                   passHref
                 >
@@ -196,8 +196,8 @@ export function Navigation() {
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
-              <Login />
-              // <></>
+              // <Login />
+              <></>
             )}
             <ModeToggle />
             {/* Mobile Navigation - Hidden on desktop */}
