@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image";
 import { Marquee } from "@/components/magicui/marquee";
 import { BlurFade } from "@/components/magicui/blur-fade";

@@ -1,4 +1,5 @@
 "use client";
+
 import { RainbowButton } from "@/components/magicui/rainbow-button";
 import { AnimatedGradientText } from "@/components/magicui/animated-gradient-text";
 import { TextAnimate } from "@/components/magicui/text-animate";

@@ -1,3 +1,12 @@
+"use client"
+
+import Image from "next/image";
+import Link from "next/link";
+import { Check } from "lucide-react";
+
+import { BorderBeam } from "@/components/magicui/border-beam";
+import { BlurFade } from "@/components/magicui/blur-fade";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -6,12 +15,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { BorderBeam } from "@/components/magicui/border-beam";
-import { BlurFade } from "@/components/magicui/blur-fade";
-import { Check } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
 
 const plans = [
   {
@@ -52,6 +55,13 @@ const images = Array.from(
   (_, i) => `/assets/webdesign/${i + 1}.png`,
 );
 
+const createWhatsAppUrl = (planTitle: string, planPrice: string) => {
+  const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
+  const templateMessage = `Halo, saya tertarik dengan paket ${planTitle} seharga ${planPrice}. Bisakah Anda memberikan informasi lebih lanjut?`;
+  const encodedMessage = encodeURIComponent(templateMessage);
+  return `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+};
+
 export default function PricingSection() {
   return (
     <div className="mx-auto mb-20 max-w-screen-xl px-2 py-8 text-center sm:px-4">
@@ -62,7 +72,7 @@ export default function PricingSection() {
       </BlurFade>
       <BlurFade delay={0.25} inView>
         <p className="mb-8 md:mb-12 dark:text-neutral-100">
-          Already have a vision for your website? We’ll bring it to life with
+          Already have a vision for your website? We'll bring it to life with
           precision and creativity.
         </p>
       </BlurFade>
@@ -97,11 +107,20 @@ export default function PricingSection() {
                 </CardHeader>
                 <CardContent />
                 <CardFooter>
-                  <Button className="h-12 w-full rounded-xl border text-xl dark:border-dark-neutral dark:bg-neutral-900">
-                    <span className="mr-2 text-base text-gray-500 line-through dark:text-gray-400">
-                      {plan.originalPrice}
-                    </span>
-                    {plan.price}
+                  <Button
+                    asChild
+                    className="h-12 w-full rounded-xl border text-xl dark:border-dark-neutral dark:bg-neutral-900"
+                  >
+                    <a
+                      href={createWhatsAppUrl(plan.title, plan.price)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span className="mr-2 text-base text-gray-500 line-through dark:text-gray-400">
+                        {plan.originalPrice}
+                      </span>
+                      {plan.price}
+                    </a>
                   </Button>
                 </CardFooter>
                 {plan.beam && <BorderBeam duration={8} size={100} />}
