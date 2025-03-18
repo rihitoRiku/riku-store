@@ -1,5 +1,5 @@
-"use client"
-import React, {useEffect} from "react";
+"use client";
+import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa6";
@@ -27,7 +27,7 @@ export default function page() {
       if (error || !data.session) {
         // console.error("No session, redirecting to login");
         showToast.error("Login first, please!")
-        
+
         router.push("/");
         return;
       }
@@ -38,8 +38,8 @@ export default function page() {
   }, [router]);
   return (
     <>
-      <div className="container mx-auto flex max-w-screen-md flex-col items-start justify-start gap-8 lg:px-4 lg:py-8 px-2 py-6">
-        <Link href="/" className="flex items-center gap-2 ms-2">
+      <div className="container mx-auto flex max-w-screen-lg flex-col items-start justify-start gap-8 px-2 py-6 lg:px-4 lg:py-8">
+        <Link href="/" className="ms-2 flex items-center gap-2">
           <FaArrowLeft />
           <span>Back to Catalog</span>
         </Link>
@@ -52,58 +52,59 @@ export default function page() {
             </Avatar>
             <div className="">
               <p className="text-xl">Rihito Kun</p>
-              <p className="text-sm">muhammadrafishidiq@gmail.com</p>
+              <p className="text-sm text-neutral-800 dark:text-neutral-300">muhammadrafishidiq@gmail.com</p>
+              <p className="text-sm text-neutral-800 dark:text-neutral-300">+628</p>
             </div>
           </div>
           <div className="mt-4 space-y-2">
-            <p>
+            {/* <p>
               Address: <br />{" "}
               <span className="text-sm">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque
                 omnis cupiditate.
               </span>
-            </p>
+            </p> 
             <p>
               Phone number: <span className="text-sm">+6289655602145</span>
-            </p>
+            </p>*/}
           </div>
         </div>
         <div className="w-full rounded-lg p-2 md:p-3">
-          <p>Order Stats</p>
-          <div className="mt-4 flex items-center justify-center md:gap-4 gap-3">
-            <div className="flex w-fit flex-col items-center justify-center gap-1 rounded-md border p-2 md:p-4">
+          <p className="text-xl">Order Stats</p>
+          <div className="mt-4 flex items-center justify-start gap-3 md:gap-4">
+            <div className="flex w-fit flex-col items-center justify-center gap-1 rounded-md border p-2 dark:border-dark-neutral md:p-4">
               <p className="text-sm md:text-base">Pending</p>
               <span className="text-2xl">0</span>
             </div>
-            <div className="flex w-fit flex-col items-center justify-center gap-1 rounded-md border p-2 md:p-4">
-              <p className="text-sm md:text-base">Shipping</p>
+            <div className="flex w-fit flex-col items-center justify-center gap-1 rounded-md border p-2 dark:border-dark-neutral md:p-4">
+              <p className="text-sm md:text-base">Process</p>
               <span className="text-2xl">0</span>
             </div>
-            <div className="flex w-fit flex-col items-center justify-center gap-1 rounded-md border p-2 md:p-4">
+            <div className="flex w-fit flex-col items-center justify-center gap-1 rounded-md border p-2 dark:border-dark-neutral md:p-4">
               <p className="text-sm md:text-base">Complete</p>
               <span className="text-2xl">0</span>
             </div>
-            <div className="flex w-fit flex-col items-center justify-center gap-1 rounded-md border p-2 md:p-4">
+            {/* <div className="flex w-fit flex-col items-center justify-center gap-1 rounded-md border p-2 dark:border-dark-neutral md:p-4">
               <p className="text-sm md:text-base">Canceled</p>
               <span className="text-2xl">0</span>
-            </div>
+            </div> */}
           </div>
         </div>
-        <div className="h-[24rem] w-full rounded-lg  p-2 md:p-3">
-          <p>Purchase History</p>{" "}
+        <div className="h-[24rem] w-full rounded-lg p-2 md:p-3">
+          <p className="text-xl">Purchase History</p>{" "}
           <div className="mt-4">
             <Table>
               {/* <TableCaption>A list of your recent invoices.</TableCaption> */}
               <TableHeader>
-                <TableRow>
+                <TableRow className="dark:border-dark-neutral">
                   <TableHead className="w-[15rem]">Item</TableHead>
                   <TableHead>Status</TableHead>
                   <TableHead className="">Amount</TableHead>
                   <TableHead className="text-right">Date</TableHead>
                 </TableRow>
               </TableHeader>
-              <TableBody>
-                <TableRow>
+              <TableBody className="text-neutral-800 dark:text-neutral-200">
+                <TableRow className="dark:border-dark-neutral">
                   <TableCell className="font-medium">Hoodie A</TableCell>
                   <TableCell>Success</TableCell>
                   <TableCell className="">$250.00</TableCell>

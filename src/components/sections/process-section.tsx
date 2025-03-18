@@ -13,10 +13,13 @@ export default function ProcessSection() {
           <BlurFade delay={0.25} inView>
             <h4 className="mb-4 text-3xl">How's The Process?</h4>
           </BlurFade>
-          <BlurFade delay={0.25*2} inView>
+          <BlurFade delay={0.25 * 2} inView>
             <p className="max-w-[28rem] text-center text-neutral-800 dark:text-neutral-100">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-              assumenda error iste.
+              It's just three easy steps, and we're here to guide you every step
+              of the way.
+              {/* <span>
+                We also provide the dashboard for you to monitor the progress!
+              </span> */}
             </p>
           </BlurFade>
         </div>
